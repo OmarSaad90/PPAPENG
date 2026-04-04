@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.ppapeng.ca)",
+      "WebSearch",
+      "WebFetch(domain:www.pexels.com)",
+      "Bash(C:/Users/Omar/AppData/Local/Programs/Python/Python313/python.exe:*)",
+      "Bash(rm:*)"
+    ]
+  }
+}

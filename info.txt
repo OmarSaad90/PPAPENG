@@ -1,0 +1,24 @@
+Homepage — Hero text position
+
+"Shift the hero text block slightly to the left so it sits more naturally against the left portion of the hero image. Don't change the text content, size, or styling — just adjust its horizontal positioning/alignment so it feels anchored to the left side rather than floating in the center."
+
+
+Homepage — "What We Teach" section padding
+
+"Reduce the top and bottom padding of the 'What We Teach' section. It currently has too much empty vertical space making it feel loose. Tighten it so the section feels dense and confident without changing any content or styling."
+
+
+Homepage — CTA section at bottom ("Ready to start preparing?")
+
+"Give the bottom CTA section ('Ready to start preparing?') the same warm off-white background color used in the 'What We Teach' section. Don't change anything else — just the background so it feels like a proper closing section."
+
+
+Homepage — "Who We Are" image
+
+"Replace the 'Who We Are' section image with a more fitting stock photo. Find a free image from Unsplash that shows engineers or professionals in an academic/office context — reviewing documents, at a whiteboard, or in a meeting. Something warmer and less industrial than the current machinery photo."
+
+(Note: Claude Code can't browse Unsplash for you — you'll need to grab the image yourself from unsplash.com and just tell it the filename)
+
+Other pages — nothing urgent, they're in good shape. The one minor thing is the Payments page — the "How It Works" steps section has the same loose vertical spacing issue as the "What We Teach" section. Same fix applies:
+
+"Reduce the top and bottom padding of the 'How It Works' section on the Payments page. Too much empty space is making it feel sparse."
