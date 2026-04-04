@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { disciplines } from "@/data/courses";
 import Navbar from "@/components/Navbar";
 import { Mail, Phone, MapPin } from "lucide-react";
-import coursesHeaderImg from "@/assets/book.webp";
+import coursesHeaderImg from "@/assets/Book.webp";
 
 const Courses = () => {
   const available = disciplines.filter(d => d.status === 'available');
