@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import heroImage from "@/assets/Hero.jpg";
 import aboutImage from "@/assets/Home2.webp";
@@ -6,6 +7,14 @@ import { ArrowRight, BookOpen, Users, GraduationCap, Mail, Phone, MapPin } from 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>PPA P.Eng. Academy | P.Eng. Exam Preparation Courses in Canada</title>
+        <meta name="description" content="Expert-led P.Eng. exam preparation courses for engineers across Canada. Covering civil, electrical, mechanical, mechatronics, and complementary studies. Aligned with PEO, APEGA, APEGBC, and all Canadian provincial engineering bodies." />
+        <link rel="canonical" href="https://www.ppapeng.ca/" />
+        <meta property="og:title" content="PPA P.Eng. Academy | P.Eng. Exam Preparation Courses in Canada" />
+        <meta property="og:description" content="Expert-led P.Eng. exam preparation courses for engineers across Canada. Aligned with all Canadian provincial engineering bodies." />
+        <meta property="og:url" content="https://www.ppapeng.ca/" />
+      </Helmet>
       <Navbar />
 
       {/* Hero */}

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { CreditCard, Smartphone, Landmark, FileText, ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -53,6 +54,14 @@ const methods = [
 const Payments = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>Enroll & Payment Options | PPA P.Eng. Academy</title>
+        <meta name="description" content="Simple enrollment and flexible payment options for PPA P.Eng. Academy courses. Pay by credit card, e-Transfer, bank transfer, or invoice. Get started on your P.Eng. certification today." />
+        <link rel="canonical" href="https://www.ppapeng.ca/payments" />
+        <meta property="og:title" content="Enroll & Payment Options | PPA P.Eng. Academy" />
+        <meta property="og:description" content="Flexible payment options for P.Eng. exam preparation courses. Credit card, e-Transfer, bank transfer, and invoice accepted." />
+        <meta property="og:url" content="https://www.ppapeng.ca/payments" />
+      </Helmet>
       <Navbar />
 
       {/* Header */}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { ChevronDown, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -131,6 +132,14 @@ const FAQs = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>FAQs | PPA P.Eng. Academy</title>
+        <meta name="description" content="Answers to frequently asked questions about P.Eng. exam preparation, course content, enrollment, payments, and certification requirements across Canadian provinces." />
+        <link rel="canonical" href="https://www.ppapeng.ca/faqs" />
+        <meta property="og:title" content="FAQs | PPA P.Eng. Academy" />
+        <meta property="og:description" content="Answers to frequently asked questions about P.Eng. exam preparation and certification in Canada." />
+        <meta property="og:url" content="https://www.ppapeng.ca/faqs" />
+      </Helmet>
       <Navbar />
 
       {/* Header */}

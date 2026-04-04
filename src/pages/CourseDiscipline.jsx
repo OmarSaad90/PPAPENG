@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
 import { ChevronDown, ArrowLeft, ArrowRight, Mail, Phone, MapPin } from "lucide-react";
 import { disciplines } from "@/data/courses";
@@ -29,6 +30,14 @@ const CourseDiscipline = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>{discipline.name} P.Eng. Courses | PPA P.Eng. Academy</title>
+        <meta name="description" content={`P.Eng. exam preparation courses for ${discipline.name.toLowerCase()} engineers across Canada. ${discipline.description} Aligned with PEO, APEGA, APEGBC, and all Canadian provincial engineering bodies.`} />
+        <link rel="canonical" href={`https://www.ppapeng.ca/courses/${disciplineId}`} />
+        <meta property="og:title" content={`${discipline.name} P.Eng. Courses | PPA P.Eng. Academy`} />
+        <meta property="og:description" content={`P.Eng. exam preparation courses for ${discipline.name.toLowerCase()} engineers across Canada.`} />
+        <meta property="og:url" content={`https://www.ppapeng.ca/courses/${disciplineId}`} />
+      </Helmet>
       <Navbar />
 
       {/* Header */}
