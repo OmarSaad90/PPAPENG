@@ -179,12 +179,12 @@ const Payments = () => {
           <p className="text-muted-foreground text-sm mb-8">
             Our team is happy to help with anything related to payment or course selection.
           </p>
-          <a
-            href="mailto:info@ppapeng.ca"
+          <Link
+            to="/contact"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-medium px-6 py-3 rounded-lg hover:opacity-90 transition-opacity text-sm"
           >
             Contact Us <ArrowRight size={15} />
-          </a>
+          </Link>
         </div>
       </section>
 

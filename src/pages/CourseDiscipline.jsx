@@ -43,7 +43,10 @@ const CourseDiscipline = () => {
       {/* Header */}
       <section className="relative pt-36 pb-16 bg-secondary border-b border-border overflow-hidden">
         {discipline.headerImage && (
-          <img src={discipline.headerImage} alt="" className="absolute inset-0 w-full h-full object-cover opacity-70" />
+          <>
+            <img src={discipline.headerImage} alt="" className="absolute inset-0 w-full h-full object-cover opacity-70" />
+            <div className="absolute inset-0 bg-gradient-to-r from-white/55 via-white/20 to-transparent" />
+          </>
         )}
         <div className="relative max-w-7xl mx-auto px-6">
           <Link

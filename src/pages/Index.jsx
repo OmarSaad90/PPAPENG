@@ -30,9 +30,6 @@ const Index = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16">
           <div className="max-w-xl">
-            <p className="text-primary font-medium text-sm tracking-widest uppercase mb-4">
-              P.Eng. Exam Preparation in Canada
-            </p>
             <h1 className="font-heading text-4xl md:text-6xl font-bold leading-[1.1] tracking-tight mb-6">
               Your path to
               <br />
@@ -47,12 +44,6 @@ const Index = () => {
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-medium px-6 py-3 rounded-lg hover:opacity-90 transition-opacity"
               >
                 Explore Courses <ArrowRight size={16} />
-              </a>
-              <a
-                href="/contact"
-                className="inline-flex items-center gap-2 border border-border text-foreground font-medium px-6 py-3 rounded-lg hover:bg-secondary transition-colors"
-              >
-                Talk to Us
               </a>
             </div>
           </div>
