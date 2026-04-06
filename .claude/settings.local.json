@@ -10,7 +10,9 @@
       "WebFetch(domain:www.creatorscripts.com)",
       "WebFetch(domain:truehost.com)",
       "WebFetch(domain:daveenjoys.com)",
-      "WebFetch(domain:help.zoho.com)"
+      "WebFetch(domain:help.zoho.com)",
+      "WebFetch(domain:improvmx.com)",
+      "WebFetch(domain:help.improvmx.com)"
     ]
   }
 }

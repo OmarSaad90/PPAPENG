@@ -6,6 +6,7 @@ import CourseDiscipline from './pages/CourseDiscipline';
 import Payments from './pages/Payments';
 import FAQs from './pages/FAQs';
 import Contact from './pages/Contact';
+import Testimonials from './pages/Testimonials';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Route path="/" element={<Index />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/:disciplineId" element={<CourseDiscipline />} />
-        <Route path="/payments" element={<Payments />} />
+        <Route path="/enroll" element={<Payments />} />
+        <Route path="/testimonials" element={<Testimonials />} />
         <Route path="/faqs" element={<FAQs />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>

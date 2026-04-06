@@ -23,52 +23,53 @@ so your email MX records (added in section 2) work in the same place.
 
 
 ========================================
-SECTION 2 — FREE EMAIL: info@ppapeng.ca VIA ZOHO + FORWARD TO GMAIL
+SECTION 2 — FREE EMAIL FORWARDING: info@ppapeng.ca VIA IMPROVMX
 ========================================
 
-Goal: emails sent to info@ppapeng.ca arrive in your personal Gmail.
-      Replies from Gmail show "From: info@ppapeng.ca".
+Goal: any email sent to info@ppapeng.ca lands in the client's personal Gmail.
+      Client replies from his personal account as normal.
 
-PART A — SET UP ZOHO MAIL
+Note: ImprovMX is a pure forwarder -- no mailbox or web inbox. All emails are
+      read from Gmail only. Free tier, no credit card, no trial.
 
-1. Go to zoho.com/mail → sign up for free plan (Zoho Mail Free)
-2. During setup, choose "Add existing domain" → type ppapeng.ca
-3. Zoho will ask you to verify ownership. Add the TXT record it gives you
-   to Porkbun DNS. Wait a few minutes, click Verify.
-4. Zoho will show you MX records to add (usually 2–3 records). Go to
-   Porkbun DNS and add all of them. They look like:
-   - MX  @  mx.zoho.com  priority 10
-   - MX  @  mx2.zoho.com priority 20
-   (exact values shown in Zoho — copy exactly)
-5. Back in Zoho: create user → username = info, password = (set one)
-   This creates info@ppapeng.ca.
-6. Done with Zoho setup.
+STEP 1 — CREATE IMPROVMX ACCOUNT
+1. Go to improvmx.com → Get Started for Free
+2. Sign up with your personal/admin email (not the client's) and select Canada
+3. Confirm your email via the link they send
 
-PART B — FORWARD ZOHO TO YOUR PERSONAL GMAIL
+STEP 2 — ADD DOMAIN AND ALIAS
+1. In ImprovMX dashboard → Add new domain → enter ppapeng.ca
+2. Add alias:
+   - Alias:       info
+   - Forwards to: client's personal Gmail address
+3. Save
 
-1. Log into Zoho Mail as info@ppapeng.ca
-2. Go to Settings (gear icon) → Mail Accounts → Email Forwarding
-3. Add your personal Gmail address as the forwarding address
-4. Confirm the forwarding address (Zoho sends a verification email to Gmail)
-5. Enable forwarding. Now everything sent to info@ppapeng.ca lands in Gmail.
+STEP 3 — UPDATE DNS IN PORKBUN
+Go to Porkbun → ppapeng.ca → DNS and make these two changes:
 
-PART C — REPLY AS info@ppapeng.ca FROM GMAIL
+A) MX records:
+   - Delete any existing MX records (e.g. fwd1.porkbun.com, fwd2.porkbun.com)
+   - Add these two:
+     MX  (leave blank)  mx1.improvmx.com  priority 10
+     MX  (leave blank)  mx2.improvmx.com  priority 20
 
-1. In Gmail → Settings (gear) → See all settings → Accounts and Import
-2. Under "Send mail as" → click "Add another email address"
-3. Name: PPA P.Eng. Academy (or whatever you want)
-   Email: info@ppapeng.ca
-   Uncheck "Treat as alias"
-4. Click Next. Gmail asks for SMTP server details. Use Zoho's SMTP:
-   - SMTP Server: smtp.zoho.com
-   - Port: 587
-   - Username: info@ppapeng.ca
-   - Password: (the Zoho password you set in Part A step 5)
-   - TLS: enabled
-5. Gmail sends a verification code to info@ppapeng.ca — it will arrive
-   in your Gmail inbox (because forwarding is on). Enter the code.
-6. Done. When composing in Gmail, click the "From" field and switch to
-   info@ppapeng.ca before sending.
+B) SPF record (TXT):
+   - Find the existing TXT record: v=spf1 include:_spf.porkbun.com ~all
+   - Edit it (do NOT add a new one) to:
+     v=spf1 include:_spf.porkbun.com include:spf.improvmx.com ~all
+   - This prevents forwarded emails from landing in spam
+
+STEP 4 — VERIFY
+1. Wait 10–30 minutes for DNS to propagate
+2. Go to inspector.improvmx.com to confirm MX and SPF show green
+3. Send a test email to info@ppapeng.ca and confirm it arrives in Gmail
+
+Done. The site shows info@ppapeng.ca for branding. All incoming emails
+forward to Gmail. Client replies from his personal address.
+
+Limitation: ImprovMX free tier is receive-only. The client cannot send
+outbound email FROM info@ppapeng.ca. If that becomes needed later,
+upgrade to ImprovMX paid (~$9/month) or use Zoho Mail Lite (~$1/month).
 
 
 ========================================

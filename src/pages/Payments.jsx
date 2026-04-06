@@ -14,7 +14,7 @@ const steps = [
   {
     icon: Mail,
     title: "Reach out to enroll",
-    desc: "Contact us through the form below or email us directly at info@ppapeng.ca with the course you want and your name.",
+    desc: "Contact us through the form below or email us directly at charbelabousamrah@ppapeng.ca with the course you want and your name.",
   },
   {
     icon: CheckCircle,
@@ -29,10 +29,10 @@ const Payments = () => {
       <Helmet>
         <title>Enroll | PPA P.Eng. Academy</title>
         <meta name="description" content="Enrolling in PPA P.Eng. Academy is simple. Browse our courses, contact us, and we handle the rest. 100% pass rate guaranteed or your money back." />
-        <link rel="canonical" href="https://www.ppapeng.ca/payments" />
+        <link rel="canonical" href="https://www.ppapeng.ca/enroll" />
         <meta property="og:title" content="Enroll | PPA P.Eng. Academy" />
         <meta property="og:description" content="Simple enrollment for P.Eng. exam preparation courses. 100% pass rate guaranteed or your money back." />
-        <meta property="og:url" content="https://www.ppapeng.ca/payments" />
+        <meta property="og:url" content="https://www.ppapeng.ca/enroll" />
       </Helmet>
       <Navbar />
 
@@ -146,8 +146,8 @@ const Payments = () => {
           <div className="flex flex-col md:flex-row items-center justify-between text-sm text-muted-foreground gap-4">
             <span className="font-heading font-bold text-foreground">PPA P.Eng. Academy</span>
             <div className="flex flex-wrap items-center justify-center gap-6">
-              <a href="mailto:info@ppapeng.ca" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
-                <Mail size={14} /> info@ppapeng.ca
+              <a href="mailto:charbelabousamrah@ppapeng.ca" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+                <Mail size={14} /> charbelabousamrah@ppapeng.ca
               </a>
               <span className="inline-flex items-center gap-1.5">
                 <Phone size={14} /> +1 (437) 299-0347

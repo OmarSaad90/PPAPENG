@@ -91,8 +91,11 @@ const Navbar = () => {
             )}
           </div>
 
-          <Link to="/payments" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Payments
+          <Link to="/testimonials" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Testimonials
+          </Link>
+          <Link to="/enroll" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Enroll
           </Link>
           <Link to="/faqs" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             FAQs
@@ -154,8 +157,11 @@ const Navbar = () => {
             )}
           </div>
 
-          <Link to="/payments" className="text-sm text-muted-foreground hover:text-foreground transition-colors" onClick={() => setOpen(false)}>
-            Payments
+          <Link to="/testimonials" className="text-sm text-muted-foreground hover:text-foreground transition-colors" onClick={() => setOpen(false)}>
+            Testimonials
+          </Link>
+          <Link to="/enroll" className="text-sm text-muted-foreground hover:text-foreground transition-colors" onClick={() => setOpen(false)}>
+            Enroll
           </Link>
           <Link to="/faqs" className="text-sm text-muted-foreground hover:text-foreground transition-colors" onClick={() => setOpen(false)}>
             FAQs

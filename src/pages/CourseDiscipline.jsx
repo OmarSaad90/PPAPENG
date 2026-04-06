@@ -145,7 +145,7 @@ const CourseDiscipline = () => {
                         )}
 
                         <a
-                          href="/payments"
+                          href="/enroll"
                           className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-medium px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity text-sm"
                         >
                           Enroll Now <ArrowRight size={14} />
@@ -166,8 +166,8 @@ const CourseDiscipline = () => {
           <div className="flex flex-col md:flex-row items-center justify-between text-sm text-muted-foreground gap-4">
             <span className="font-heading font-bold text-foreground">PPA P.Eng. Academy</span>
             <div className="flex flex-wrap items-center justify-center gap-6">
-              <a href="mailto:info@ppapeng.ca" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
-                <Mail size={14} /> info@ppapeng.ca
+              <a href="mailto:charbelabousamrah@ppapeng.ca" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+                <Mail size={14} /> charbelabousamrah@ppapeng.ca
               </a>
               <span className="inline-flex items-center gap-1.5">
                 <Phone size={14} /> +1 (437) 299-0347

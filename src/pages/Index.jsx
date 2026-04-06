@@ -2,7 +2,8 @@ import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import heroImage from "@/assets/Hero.jpg";
 import aboutImage from "@/assets/Home2.webp";
-import { ArrowRight, BookOpen, Users, GraduationCap, Mail, Phone, MapPin } from "lucide-react";
+import instructorImage from "@/assets/charbel.png";
+import { ArrowRight, BookOpen, Users, GraduationCap, Mail, Phone, MapPin, BadgeCheck } from "lucide-react";
 
 const Index = () => {
   return (
@@ -146,8 +147,38 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA + Footer */}
-      <section className="bg-background border-t border-border">
+      {/* Instructor */}
+      <section className="py-16 border-t border-border">
+        <div className="max-w-2xl mx-auto px-6 text-center">
+          <p className="text-primary text-sm font-medium tracking-widest uppercase mb-6">Your instructor</p>
+          <img
+            src={instructorImage}
+            alt="Charbel Abou Samra"
+            className="w-28 h-28 rounded-full object-cover object-top mx-auto mb-4"
+            loading="lazy"
+          />
+          <h2 className="font-heading text-xl font-bold tracking-tight mb-0.5">Charbel Abou Samra</h2>
+          <p className="text-muted-foreground text-sm mb-6">Faculty, Stevens Institute of Technology</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-left inline-grid">
+            {[
+              "Professional Engineer (P.Eng.), PEO",
+              "Project Management Professional (PMP), PMI",
+              "Planning and Scheduling Professional (PSP), AACEI",
+              "Risk Management Professional (RMP), PMI",
+              "M.Eng. Civil Engineering",
+              "MBA, Rotman School of Management, University of Toronto",
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-2">
+                <BadgeCheck size={14} className="text-primary shrink-0" />
+                <span className="text-sm text-muted-foreground">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="border-t border-border" style={{ backgroundColor: '#f7f4ef', backgroundImage: 'radial-gradient(circle, rgba(217, 119, 6, 0.15) 1px, transparent 1px)', backgroundSize: '24px 24px' }}>
         <div className="max-w-7xl mx-auto px-6 py-24 text-center">
           <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight mb-4">
             Ready to start preparing?
@@ -170,13 +201,17 @@ const Index = () => {
             </a>
           </div>
 
-          <div className="soft-line mb-10" />
+        </div>
+      </section>
 
+      {/* Footer */}
+      <section className="bg-background border-t border-border">
+        <div className="max-w-7xl mx-auto px-6 py-10">
           <div className="flex flex-col md:flex-row items-center justify-between text-sm text-muted-foreground gap-6">
             <span className="font-heading font-bold text-foreground text-base">PPA P.Eng. Academy</span>
             <div className="flex flex-wrap items-center justify-center gap-8">
-              <a href="mailto:info@ppapeng.ca" className="inline-flex items-center gap-2 hover:text-foreground transition-colors">
-                <Mail size={14} /> info@ppapeng.ca
+              <a href="mailto:charbelabousamrah@ppapeng.ca" className="inline-flex items-center gap-2 hover:text-foreground transition-colors">
+                <Mail size={14} /> charbelabousamrah@ppapeng.ca
               </a>
               <span className="inline-flex items-center gap-2">
                 <Phone size={14} /> +1 (437) 299-0347
