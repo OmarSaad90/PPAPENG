@@ -148,38 +148,59 @@ const Index = () => {
       </section>
 
       {/* Instructor */}
-      <section className="py-16 border-t border-border">
-        <div className="max-w-2xl mx-auto px-6 text-center">
-          <p className="text-primary text-sm font-medium tracking-widest uppercase mb-6">Your instructor</p>
-          <img
-            src={instructorImage}
-            alt="Charbel Abou Samra"
-            className="w-28 h-28 rounded-full object-cover object-top mx-auto mb-4"
-            loading="lazy"
-          />
-          <h2 className="font-heading text-xl font-bold tracking-tight mb-0.5">Charbel Abou Samra</h2>
-          <p className="text-muted-foreground text-sm mb-6">Faculty, Stevens Institute of Technology</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 text-left inline-grid">
-            {[
-              "Professional Engineer (P.Eng.), PEO",
-              "Project Management Professional (PMP), PMI",
-              "Planning and Scheduling Professional (PSP), AACEI",
-              "Risk Management Professional (RMP), PMI",
-              "M.Eng. Civil Engineering",
-              "MBA, Rotman School of Management, University of Toronto",
-            ].map((item) => (
-              <div key={item} className="flex items-center gap-2">
-                <BadgeCheck size={14} className="text-primary shrink-0" />
-                <span className="text-sm text-muted-foreground">{item}</span>
-              </div>
-            ))}
+      <section className="pt-10 pb-24 border-t border-border">
+        <div className="max-w-5xl mx-auto px-6">
+          <p className="text-primary text-sm font-medium tracking-widest uppercase mb-8 text-center">Your instructor</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:items-start">
+
+            {/* Left credentials */}
+            <div className="flex flex-col gap-3 order-2 md:order-1 md:pt-16">
+              {[
+                "Professional Engineer (P.Eng.), PEO",
+                "Project Management Professional (PMP), PMI",
+                "Planning and Scheduling Professional (PSP), AACEI",
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-2">
+                  <BadgeCheck size={14} className="text-primary shrink-0 mt-0.5" />
+                  <span className="text-sm text-muted-foreground leading-snug">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Center: photo + name */}
+            <div className="flex flex-col items-center text-center order-1 md:order-2">
+              <img
+                src={instructorImage}
+                alt="Charbel Abou Samra"
+                className="w-44 h-44 rounded-full object-cover object-top mb-4 ring-2 ring-primary/20"
+                loading="lazy"
+              />
+              <h2 className="font-heading text-xl font-bold tracking-tight mb-0.5">Charbel Abou Samra</h2>
+              <p className="text-foreground text-sm font-medium mb-0.5">P.Eng. Instructor</p>
+              <p className="text-muted-foreground text-sm">Faculty, Stevens Institute of Technology</p>
+            </div>
+
+            {/* Right credentials */}
+            <div className="flex flex-col gap-3 order-3 md:pt-14">
+              {[
+                "Risk Management Professional (RMP), PMI",
+                "M.Eng. Civil Engineering",
+                "MBA, Rotman School of Management, University of Toronto",
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-2">
+                  <BadgeCheck size={14} className="text-primary shrink-0 mt-0.5" />
+                  <span className="text-sm text-muted-foreground leading-snug">{item}</span>
+                </div>
+              ))}
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* CTA */}
       <section className="border-t border-border" style={{ backgroundColor: '#f7f4ef', backgroundImage: 'radial-gradient(circle, rgba(217, 119, 6, 0.15) 1px, transparent 1px)', backgroundSize: '24px 24px' }}>
-        <div className="max-w-7xl mx-auto px-6 py-24 text-center">
+        <div className="max-w-7xl mx-auto px-6 pt-14 pb-8 text-center">
           <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight mb-4">
             Ready to start preparing?
           </h2>
