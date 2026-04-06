@@ -4,7 +4,7 @@ import mechanicalHeroImg from '@/assets/mechanical-hero.webp';
 import mechatronicsHeroImg from '@/assets/mechatronics-hero.webp';
 import complementaryHeroImg from '@/assets/complementary-hero.webp';
 import {
-  TrendingUp, Waves, Navigation, Route,
+  TrendingUp, Waves, Navigation, Route, Ruler, Building,
   Zap, Sliders, Activity, Network,
   Flame, Wind, Gauge, Layers,
   Cpu, CircuitBoard, Plug, Thermometer,
@@ -79,6 +79,34 @@ export const disciplines = [
           'Rigid Pavement Design: JPCP, JRCP, and CRCP principles',
           'Earthworks: cut/fill volume calculations and mass haul diagrams',
           'Drainage systems and soil behavior affecting pavement longevity',
+        ],
+      },
+      {
+        id: 'elementary-structural-analysis',
+        title: 'Elementary Structural Analysis (CIV A1)',
+        icon: Ruler,
+        summary:
+          'Structural analysis is the foundation of safe and efficient civil engineering design. This course develops the skills needed to fully analyze determinate structures, from computing reactions and internal forces to calculating deformations. It then extends into indeterminate structures, introducing the moment distribution, slope deflection, and energy methods that form the core of structural engineering practice. By the end, you will be able to analyze a wide range of real structures and approach the P.Eng. structural problems with confidence.',
+        topics: [
+          'Computation of reactions, shearing forces, normal forces, and bending moments',
+          'Deformation analysis of statically determinate structures',
+          'Influence lines for moving loads',
+          'Moment distribution method for indeterminate structures without sidesway',
+          'Slope deflection method',
+          'Energy methods applied to structural analysis',
+        ],
+      },
+      {
+        id: 'advanced-structural-analysis',
+        title: 'Advanced Structural Analysis (CIV B1)',
+        icon: Building,
+        summary:
+          'Real-world structures are rarely simple, and the ability to analyze indeterminate systems is a defining skill for senior civil engineers. This course covers the systematic analysis of complex indeterminate structures including trusses, beams, frames, and arches using the flexibility and stiffness methods. Matrix formulation ties it all together, giving you a rigorous and scalable framework that underpins modern structural analysis software and the advanced problems tested on the P.Eng. exam.',
+        topics: [
+          'Analysis of statically indeterminate trusses, beams, frames, and arches',
+          'Flexibility (force) method: formulation and application',
+          'Stiffness (displacement) method: formulation and application',
+          'Matrix methods of structural analysis',
         ],
       },
     ],

@@ -5,7 +5,12 @@
       "WebSearch",
       "WebFetch(domain:www.pexels.com)",
       "Bash(C:/Users/Omar/AppData/Local/Programs/Python/Python313/python.exe:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "WebFetch(domain:www.zoho.com)",
+      "WebFetch(domain:www.creatorscripts.com)",
+      "WebFetch(domain:truehost.com)",
+      "WebFetch(domain:daveenjoys.com)",
+      "WebFetch(domain:help.zoho.com)"
     ]
   }
 }

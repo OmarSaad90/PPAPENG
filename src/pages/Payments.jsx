@@ -1,53 +1,25 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { CreditCard, Smartphone, Landmark, FileText, ArrowRight, Mail, Phone, MapPin } from "lucide-react";
+import { BookOpen, Mail, CheckCircle, ArrowRight, Phone, MapPin } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
 const steps = [
   {
-    title: "Choose a course",
-    desc: "Browse our available courses and select the one you want to enroll in.",
+    icon: BookOpen,
+    title: "Browse our courses",
+    desc: "Explore all available P.Eng. exam preparation courses by engineering discipline.",
     link: "/courses",
     linkLabel: "View courses",
   },
   {
-    title: "Pick a payment method",
-    desc: "Select from the payment options below. Online payments give you immediate access upon completion.",
+    icon: Mail,
+    title: "Reach out to enroll",
+    desc: "Contact us through the form below or email us directly at info@ppapeng.ca with the course you want and your name.",
   },
   {
-    title: "Complete your payment",
-    desc: "Follow the steps for your chosen method. For non-online payments, include your full name and course title in the payment notes.",
-  },
-  {
-    title: "Get your confirmation",
-    desc: "You will receive a confirmation within 24 hours. Online payments grant immediate access to your course materials.",
-  },
-];
-
-const methods = [
-  {
-    icon: CreditCard,
-    title: "Credit / Debit Card",
-    desc: "Secure online payment via Visa, Mastercard, and AMEX. Immediate access upon successful payment.",
-    note: null,
-  },
-  {
-    icon: Smartphone,
-    title: "e-Transfer",
-    desc: "Available for Canadian customers. Send your transfer and email us your confirmation to complete enrollment.",
-    note: "Canadian customers only",
-  },
-  {
-    icon: Landmark,
-    title: "Bank Transfer",
-    desc: "Direct bank transfer accepted. Contact us for banking details and include your name and course in the transfer notes.",
-    note: null,
-  },
-  {
-    icon: FileText,
-    title: "Invoice",
-    desc: "Available for company-sponsored enrollments. Reach out to request a formal invoice for your organization.",
-    note: "Corporate sponsorships",
+    icon: CheckCircle,
+    title: "We take it from there",
+    desc: "We will confirm your spot, send you all the details, and get you started as quickly as possible.",
   },
 ];
 
@@ -55,11 +27,11 @@ const Payments = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>Enroll & Payment Options | PPA P.Eng. Academy</title>
-        <meta name="description" content="Simple enrollment and flexible payment options for PPA P.Eng. Academy courses. Pay by credit card, e-Transfer, bank transfer, or invoice. Get started on your P.Eng. certification today." />
+        <title>Enroll | PPA P.Eng. Academy</title>
+        <meta name="description" content="Enrolling in PPA P.Eng. Academy is simple. Browse our courses, contact us, and we handle the rest. 100% pass rate guaranteed or your money back." />
         <link rel="canonical" href="https://www.ppapeng.ca/payments" />
-        <meta property="og:title" content="Enroll & Payment Options | PPA P.Eng. Academy" />
-        <meta property="og:description" content="Flexible payment options for P.Eng. exam preparation courses. Credit card, e-Transfer, bank transfer, and invoice accepted." />
+        <meta property="og:title" content="Enroll | PPA P.Eng. Academy" />
+        <meta property="og:description" content="Simple enrollment for P.Eng. exam preparation courses. 100% pass rate guaranteed or your money back." />
         <meta property="og:url" content="https://www.ppapeng.ca/payments" />
       </Helmet>
       <Navbar />
@@ -69,16 +41,37 @@ const Payments = () => {
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-primary text-sm font-medium tracking-widest uppercase mb-3">Enrollment</p>
           <h1 className="font-heading text-4xl md:text-6xl font-bold tracking-tight mb-5">
-            Ready to enroll?
+            Ready to get started?
           </h1>
           <p className="text-muted-foreground text-lg max-w-xl leading-relaxed">
-            Getting started is straightforward. Follow the steps below and reach out if you need any help along the way.
+            Enrolling is straightforward. Pick a course, reach out, and we handle everything else.
           </p>
+
+          <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 mt-8">
+            <div className="flex items-start gap-3">
+              <CheckCircle size={20} className="text-primary shrink-0 mt-0.5" />
+              <div>
+                <p className="font-heading text-sm font-semibold text-foreground mb-0.5">100% pass rate</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Every student who completed our courses passed their P.Eng. exam on the first attempt.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <CheckCircle size={20} className="text-primary shrink-0 mt-0.5" />
+              <div>
+                <p className="font-heading text-sm font-semibold text-foreground mb-0.5">Full refund guarantee</p>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  If you complete the course and do not pass, you get a full refund. No questions asked.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Steps */}
-      <section className="py-14 bg-secondary border-b border-border">
+      <section className="py-14 border-b border-border" style={{ backgroundColor: '#f7f4ef', backgroundImage: 'radial-gradient(circle, rgba(217, 119, 6, 0.15) 1px, transparent 1px)', backgroundSize: '24px 24px' }}>
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-primary text-sm font-medium tracking-widest uppercase mb-12">How it works</p>
 
@@ -87,8 +80,8 @@ const Payments = () => {
             {steps.map((step, index) => (
               <>
                 <div key={step.title} className="flex-1 flex flex-col items-center text-center px-4">
-                  <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center mb-5 shrink-0">
-                    <span className="text-primary-foreground text-xs font-bold">{index + 1}</span>
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-5 shrink-0">
+                    <step.icon size={18} className="text-primary" />
                   </div>
                   <h3 className="font-heading text-base font-semibold text-foreground mb-2">{step.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
@@ -111,8 +104,8 @@ const Payments = () => {
           <div className="flex flex-col gap-8 md:hidden">
             {steps.map((step, index) => (
               <div key={step.title} className="flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0">
-                  <span className="text-primary-foreground text-xs font-bold">{index + 1}</span>
+                <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <step.icon size={16} className="text-primary" />
                 </div>
                 <div>
                   <h3 className="font-heading text-base font-semibold text-foreground mb-1">{step.title}</h3>
@@ -129,55 +122,14 @@ const Payments = () => {
         </div>
       </section>
 
-      {/* Payment methods */}
-      <section className="py-20 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6">
-          <p className="text-primary text-sm font-medium tracking-widest uppercase mb-3">Payment options</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight mb-14">
-            We accept several methods.
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12">
-            {methods.map((method) => (
-              <div key={method.title} className="flex gap-5">
-                <div className="mt-0.5 shrink-0">
-                  <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-primary/10">
-                    <method.icon size={18} className="text-primary" />
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center gap-3 mb-1.5">
-                    <h3 className="font-heading text-base font-semibold text-foreground">
-                      {method.title}
-                    </h3>
-                    {method.note && (
-                      <span className="text-xs text-muted-foreground border border-border px-2 py-0.5 rounded">
-                        {method.note}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {method.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-muted-foreground text-sm mt-12 max-w-xl">
-            More payment options will be added soon. If your preferred method is not listed, contact us and we will do our best to accommodate.
-          </p>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="py-20 border-b border-border">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <h2 className="font-heading text-2xl md:text-3xl font-bold tracking-tight mb-2">
-            Have a question before enrolling?
+            Questions before enrolling?
           </h2>
-          <p className="text-muted-foreground text-sm mb-8">
-            Our team is happy to help with anything related to payment or course selection.
+          <p className="text-muted-foreground text-sm mb-8 max-w-md mx-auto">
+            Reach out and we will help you choose the right course and get started.
           </p>
           <Link
             to="/contact"

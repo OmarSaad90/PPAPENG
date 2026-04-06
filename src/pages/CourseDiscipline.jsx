@@ -51,7 +51,7 @@ const CourseDiscipline = () => {
         <div className="relative max-w-7xl mx-auto px-6">
           <Link
             to="/courses"
-            className="inline-flex items-center gap-2 text-sm text-foreground hover:text-foreground transition-colors mb-8"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-gray-900 hover:text-black transition-colors mb-8 drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)]"
           >
             <ArrowLeft size={14} /> All Courses
           </Link>

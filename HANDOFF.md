@@ -22,9 +22,9 @@ The old site looks generic ("PowerPoint-like"). Goal is a clean, professional, l
 ## Pages built (all complete)
 
 ### Homepage — `src/pages/Index.jsx`
-Sections: Hero (Hero.jpg + white gradient overlay `from-white/60 via-white/20 to-transparent`), About (two-column with Home2.webp), What We Teach (3 feature items on warm `#f7f4ef` bg with amber dot grid overlay, divider-separated), CTA (white bg, standard gray border-t) + footer.
+Sections: Hero (Hero.jpg + white gradient overlay `from-white/60 via-white/20 to-transparent` left-to-right), About (two-column with Home2.webp), What We Teach (3 feature items on warm `#f7f4ef` bg with amber dot grid overlay, divider-separated), CTA (white bg, standard gray border-t) + footer.
 UI details: amber rules under section labels, icon circles on feature items, footer contact items spaced with `gap-8`.
-Hero subtitle uses `text-foreground` for readability against the image.
+Hero subtitle uses `text-foreground` for readability against the image. Hero has no small caps label above the heading (was removed). Heading uses `font-extrabold`. Only one CTA button in hero ("Explore Courses") -- "Talk to Us" was removed.
 "What We Teach" uses `py-14`. Feature items use `Multi-field coverage`, `Expert-led instruction`, `Flexible, self-paced learning`.
 
 ### Courses directory — `src/pages/Courses.jsx`
@@ -34,11 +34,13 @@ Header uses `Book.webp` as CSS background-image (320px fixed height, `background
 ### Discipline page — `src/pages/CourseDiscipline.jsx`
 Accordion list of courses. Each course title has a lucide icon. Click to expand: amber left-border, summary, bullet topics, Enroll Now button. Smooth CSS grid animation.
 Header text: "All Courses" back link is `text-foreground`, discipline name label uses `#f59e0b` bold amber, subtitle uses `text-foreground`.
+Header image has a `from-white/55 via-white/20 to-transparent` left-to-right gradient overlay to keep the amber label readable against bright images.
 Dynamic SEO title/description per discipline via react-helmet-async.
 
 ### Payments — `src/pages/Payments.jsx`
-Arrow-connected 4-step flow (`py-14`), payment methods (icon + title + desc), contact CTA (centered), footer.
-Content is placeholder — waiting on client for real payment details and integration.
+Simple 3-step enrollment flow: Browse courses → Reach out (email/contact form) → We take it from there.
+Guarantee banner: 100% pass rate + full refund if they fail.
+No payment integration -- all enrollment is handled manually over email.
 
 ### FAQs — `src/pages/FAQs.jsx`
 4 categories in a 2-column grid on desktop. "Still have a question?" CTA links to /contact.
@@ -63,6 +65,7 @@ All 5 disciplines have `headerImage` set.
 
 ## Navbar — `src/components/Navbar.jsx`
 Fixed top, white/90 backdrop blur. Courses link has a hover-triggered dropdown (desktop, 150ms close delay) showing "All Courses" + all 5 discipline links. Clicking "Courses" also navigates to /courses. Mobile uses tap-to-expand with amber left border.
+Hide-on-scroll behavior: slides up (`-translate-y-full`) when scrolling down, slides back in when scrolling up or when at top of page. Transition 300ms.
 
 ## Theme — `src/index.css`
 Light theme:
@@ -104,12 +107,47 @@ Python download workflow: `C:/Users/Omar/AppData/Local/Programs/Python/Python313
 - Image labels on hero backgrounds use `#f59e0b` bold amber, body text uses `text-foreground`
 - Asset filenames are case-sensitive on Linux/Netlify — imports must match exact case
 
+## Domain + Email setup (not done yet)
+
+### Connecting ppapeng.ca to Netlify
+Domain is registered on GoDaddy. Two options:
+
+**Option A -- Switch nameservers to Netlify (recommended):**
+1. Netlify: Site → Domain management → Add custom domain → `ppapeng.ca`
+2. Netlify shows 4 nameservers
+3. GoDaddy: My Products → domain → DNS → Nameservers → Custom → paste Netlify's nameservers
+4. Wait a few hours, Netlify auto-provisions SSL
+
+**Option B -- Keep GoDaddy DNS, just add records:**
+- `A` record: `@` → `75.2.60.5`
+- `CNAME`: `www` → `[site-name].netlify.app`
+- Then add the custom domain in Netlify dashboard
+
+### Activating info@ppapeng.ca
+Currently a placeholder. Domain is on GoDaddy but GoDaddy doesn't handle email by default -- need a separate email host.
+
+**Chosen approach (pending): Zoho Mail free + Gmail forwarding**
+- Sign up at zoho.com/mail (free plan), add `ppapeng.ca` as domain
+- Zoho provides MX records -- paste them into GoDaddy DNS
+- In Zoho: set up forwarding to client's personal Gmail
+- In Gmail: Settings → Accounts → "Send mail as" → add `info@ppapeng.ca` → use Zoho SMTP
+- Result: everything works inside Gmail for free, never need to open Zoho
+
+**Alternative if client wants native Gmail:** Google Workspace (~$7/month) -- same DNS/MX process but Google handles everything.
+
+GoDaddy DNS will have both: records pointing web traffic to Netlify + MX records pointing email to Zoho. They coexist fine.
+
 ## What still needs to be done
-- **Payments page:** waiting on client for real payment details + pricing
+- **Payments page:** DONE -- email-based enrollment, no payment integration.
 - **Contact form:** wire up web3forms (waiting on client email)
 - **Google Search Console:** submit sitemap after deploy
+- **Facebook page:** to be set up after payments decision. Plan is client creates page under his own account, dev gets added as admin. Configure Meta Ads Manager with monthly budget cap and auto-boost rule so posts boost automatically. Client pays ad spend directly.
 
-## Planned next phase — cart + checkout
+## What's done (recently completed)
+- Course discipline header images added and wired up for all 5 disciplines
+- Homepage cleaned up and finalized
+
+## Planned next phase — cart + checkout (CANCELLED -- client chose email-based enrollment)
 Architecture is confirmed: no database, stays on Netlify, email-based course delivery.
 
 **Stack:**

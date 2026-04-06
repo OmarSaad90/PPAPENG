@@ -56,15 +56,15 @@ const categories = [
     faqs: [
       {
         q: "How do I enroll?",
-        a: "Select your course, go to the Payments page, choose your preferred payment method, and complete the transaction. Online card payments give you immediate access, while other methods are activated after payment verification.",
+        a: "Browse our courses, then contact us through the Contact page or email us directly at info@ppapeng.ca with the course you want and your name. We will confirm your spot and get you started quickly.",
       },
       {
-        q: "What payment methods are accepted?",
-        a: "We accept credit and debit cards (Visa, Mastercard, AMEX), Interac e-Transfer for Canadian customers, bank transfers, and invoicing for company-sponsored enrollments.",
+        q: "Do you offer a refund if I do not pass?",
+        a: "Yes. If you complete the course and do not pass your P.Eng. exam, you receive a full refund. No questions asked.",
       },
       {
-        q: "When can I start after enrolling?",
-        a: "Online card payments grant immediate access. For e-Transfer and bank transfers, access is provided once we verify the payment, typically within 24 hours.",
+        q: "Is there a guarantee?",
+        a: "Yes. We have a 100% pass rate -- every student who has completed our courses has passed their P.Eng. exam on the first attempt. If that changes for you, you get your money back in full.",
       },
     ],
   },
@@ -89,7 +89,7 @@ const categories = [
       },
       {
         q: "What happens if I do not pass my P.Eng. exam?",
-        a: "We are committed to your success. If you do not pass, we will work with you to provide additional support and resources to help you succeed on your next attempt.",
+        a: "You receive a full refund. We stand behind our courses completely -- if you completed the material and still did not pass, we will refund you in full.",
       },
     ],
   },
@@ -126,9 +126,13 @@ const FAQItem = ({ faq, isOpen, onToggle }) => (
 );
 
 const FAQs = () => {
-  const [openItem, setOpenItem] = useState(null);
+  const [openItems, setOpenItems] = useState(new Set());
 
-  const toggle = (key) => setOpenItem((prev) => (prev === key ? null : key));
+  const toggle = (key) => setOpenItems((prev) => {
+    const next = new Set(prev);
+    next.has(key) ? next.delete(key) : next.add(key);
+    return next;
+  });
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -170,7 +174,7 @@ const FAQs = () => {
                     <FAQItem
                       key={key}
                       faq={faq}
-                      isOpen={openItem === key}
+                      isOpen={openItems.has(key)}
                       onToggle={() => toggle(key)}
                     />
                   );

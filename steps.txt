@@ -1,0 +1,172 @@
+========================================
+SECTION 1 — CONNECT PORKBUN DOMAIN TO NETLIFY
+========================================
+
+Your domain is on Porkbun. Your site is already live on Netlify. You just need to
+point the domain at Netlify.
+
+1. Go to Netlify → your site → Domain management → Add custom domain
+2. Type: ppapeng.ca → click Verify → Add domain
+3. Also add www.ppapeng.ca the same way
+4. Netlify will show you DNS records to add. You need these two:
+   - A record:     @ (or ppapeng.ca)   →   75.2.60.5
+   - CNAME record: www                  →   [your-site].netlify.app
+5. Go to Porkbun → your account → domain list → ppapeng.ca → DNS
+6. Delete any existing A or CNAME records for @ and www
+7. Add the A record: host = (leave blank or @), answer = 75.2.60.5, TTL = 600
+8. Add the CNAME record: host = www, answer = [your-site].netlify.app, TTL = 600
+9. Wait 10–30 minutes. Netlify auto-provisions your SSL cert.
+10. Done. ppapeng.ca and www.ppapeng.ca both serve your Netlify site.
+
+Note: do NOT switch nameservers to Netlify's nameservers. Keep Porkbun as DNS
+so your email MX records (added in section 2) work in the same place.
+
+
+========================================
+SECTION 2 — FREE EMAIL: info@ppapeng.ca VIA ZOHO + FORWARD TO GMAIL
+========================================
+
+Goal: emails sent to info@ppapeng.ca arrive in your personal Gmail.
+      Replies from Gmail show "From: info@ppapeng.ca".
+
+PART A — SET UP ZOHO MAIL
+
+1. Go to zoho.com/mail → sign up for free plan (Zoho Mail Free)
+2. During setup, choose "Add existing domain" → type ppapeng.ca
+3. Zoho will ask you to verify ownership. Add the TXT record it gives you
+   to Porkbun DNS. Wait a few minutes, click Verify.
+4. Zoho will show you MX records to add (usually 2–3 records). Go to
+   Porkbun DNS and add all of them. They look like:
+   - MX  @  mx.zoho.com  priority 10
+   - MX  @  mx2.zoho.com priority 20
+   (exact values shown in Zoho — copy exactly)
+5. Back in Zoho: create user → username = info, password = (set one)
+   This creates info@ppapeng.ca.
+6. Done with Zoho setup.
+
+PART B — FORWARD ZOHO TO YOUR PERSONAL GMAIL
+
+1. Log into Zoho Mail as info@ppapeng.ca
+2. Go to Settings (gear icon) → Mail Accounts → Email Forwarding
+3. Add your personal Gmail address as the forwarding address
+4. Confirm the forwarding address (Zoho sends a verification email to Gmail)
+5. Enable forwarding. Now everything sent to info@ppapeng.ca lands in Gmail.
+
+PART C — REPLY AS info@ppapeng.ca FROM GMAIL
+
+1. In Gmail → Settings (gear) → See all settings → Accounts and Import
+2. Under "Send mail as" → click "Add another email address"
+3. Name: PPA P.Eng. Academy (or whatever you want)
+   Email: info@ppapeng.ca
+   Uncheck "Treat as alias"
+4. Click Next. Gmail asks for SMTP server details. Use Zoho's SMTP:
+   - SMTP Server: smtp.zoho.com
+   - Port: 587
+   - Username: info@ppapeng.ca
+   - Password: (the Zoho password you set in Part A step 5)
+   - TLS: enabled
+5. Gmail sends a verification code to info@ppapeng.ca — it will arrive
+   in your Gmail inbox (because forwarding is on). Enter the code.
+6. Done. When composing in Gmail, click the "From" field and switch to
+   info@ppapeng.ca before sending.
+
+
+========================================
+SECTION 3 — FACEBOOK PAGE + $50-100/MONTH ADS
+========================================
+
+PART A — CREATE THE PAGE
+
+1. Log into Facebook with the client's personal account
+2. Click the plus (+) icon top right → Page
+3. Name: PPA P.Eng. Academy
+   Category: Education, Educational Consultant, or Online Education
+4. Add profile picture (use the logo), cover photo (use a course-related image)
+5. Fill in: website (ppapeng.ca), email (info@ppapeng.ca), about blurb
+6. Publish the page
+7. To add you as admin: Page Settings → Page roles → add your Facebook
+   account as Admin
+
+PART B — WHAT TO POST
+
+Post types that work for this kind of service:
+
+- "Did you know?" posts — one quick engineering fact or exam tip (2x/week)
+- Course spotlight — one discipline per week, e.g. "Studying for your Civil
+  P.Eng. exam? Here's what our Civil Engineering bundle covers..."
+- Student outcome posts — once someone completes a course, post a short
+  congratulations (with permission)
+- Behind-the-scenes — who built the courses, what makes them different
+- Province-specific posts — "Engineers in Ontario: here's what you need
+  for your P.Eng." (targets local audiences well for ads)
+- Exam season reminders — OSPE, APEGA, PEO exam dates coming up, link to courses
+
+Posting frequency: 3–4 times per week is plenty to start.
+
+PART C — $50-100/MONTH ADS SETUP
+
+1. Go to facebook.com/adsmanager → create account linked to the page
+2. Set up a payment method (credit card) — client pays this directly
+3. Create a campaign:
+   - Objective: Traffic (sends people to ppapeng.ca) or Leads
+   - Budget: set a monthly budget cap (e.g. $75/month)
+   - Audience: Canada, ages 25–45, interests: engineering, professional
+     certification, P.Eng., APEGA, PEO, OSPE
+   - Ad creative: use a course spotlight post or a simple "Are you
+     preparing for your P.Eng. exam?" image with a button to the site
+4. To auto-boost posts: Page Settings → Automated Ads → set a rule to
+   boost any post that gets above X organic reach with $5-10 budget.
+   Or just manually boost the best-performing posts each week.
+
+At $75/month you can run one always-on traffic campaign and have a small
+budget left to boost 1–2 posts per month. This is a good starting point
+before scaling.
+
+
+========================================
+SECTION 4 — PAYMENTS INTEGRATION (OVERVIEW)
+========================================
+
+OPTION A — PAYPAL CHECKOUT (REAL PAYMENTS)
+
+Stack: @paypal/react-paypal-js + 2 Netlify Functions + Resend email
+
+Flow:
+1. "Enroll Now" on course page adds course to cart (React Context + localStorage)
+2. Cart icon in navbar shows count
+3. /checkout page — shows cart, PayPal button
+4. Netlify Function creates a PayPal order server-side (needs PayPal Client ID + Secret)
+5. User pays via PayPal
+6. Second Netlify Function verifies payment → triggers Resend email with
+   course access details sent to the student
+7. Confirmation page shown
+
+Requirements from client:
+- Canadian PayPal Business account
+- Client ID and Secret from PayPal Developer Dashboard
+- Resend account (free tier is fine)
+
+Estimated scope: 3 sessions once credentials are available.
+
+
+OPTION B — SKIP PAYMENTS, EMAIL-BASED ENROLLMENT (SIMPLER)
+
+If the client decides not to do payments yet, the flow becomes:
+
+1. "Enroll Now" button → opens the Contact page (or a mailto: link)
+   pre-filled with the course name in subject
+2. Student emails info@ppapeng.ca to express interest
+3. Client responds manually, handles payment offline (e-transfer, etc.)
+4. Client emails course materials directly
+
+UI changes needed if going this route:
+- Replace "Enroll Now" button text with "Request Access" or "Get in Touch"
+- Update Payments page to explain the manual process (e.g. "To enroll,
+  contact us at info@ppapeng.ca — we'll confirm your spot and send
+  payment instructions")
+- Remove or simplify the Payments page steps (the 4-step flow currently
+  implies a real checkout)
+- Optional: add a simple pricing section somewhere visible
+
+This is the faster path and costs nothing to build. Can always upgrade
+to PayPal checkout later without breaking anything.
