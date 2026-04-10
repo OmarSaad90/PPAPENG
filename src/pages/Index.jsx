@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import heroImage from "@/assets/Hero.jpg";
 import aboutImage from "@/assets/Home2.webp";
 import instructorImage from "@/assets/charbel.png";
-import { ArrowRight, BookOpen, Users, GraduationCap, Mail, Phone, MapPin, BadgeCheck } from "lucide-react";
+import { ArrowRight, BookOpen, Users, GraduationCap, Mail, Phone, MapPin, BadgeCheck, CheckCircle, ShieldCheck } from "lucide-react";
 
 const Index = () => {
   return (
@@ -148,50 +148,51 @@ const Index = () => {
       </section>
 
       {/* Instructor */}
-      <section className="pt-10 pb-24 border-t border-border">
-        <div className="max-w-5xl mx-auto px-6">
-          <p className="text-primary text-sm font-medium tracking-widest uppercase mb-8 text-center">Your instructor</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:items-start">
+      <section className="py-24 border-t border-border">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-16 items-start">
 
-            {/* Left credentials */}
-            <div className="flex flex-col gap-3 order-2 md:order-1 md:pt-16">
-              {[
-                "Professional Engineer (P.Eng.), PEO",
-                "Project Management Professional (PMP), PMI",
-                "Planning and Scheduling Professional (PSP), AACEI",
-              ].map((item) => (
-                <div key={item} className="flex items-start gap-2">
-                  <BadgeCheck size={14} className="text-primary shrink-0 mt-0.5" />
-                  <span className="text-sm text-muted-foreground leading-snug">{item}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Center: photo + name */}
-            <div className="flex flex-col items-center text-center order-1 md:order-2">
-              <img
-                src={instructorImage}
-                alt="Charbel Abou Samra"
-                className="w-44 h-44 rounded-full object-cover object-top mb-4 ring-2 ring-primary/20"
-                loading="lazy"
-              />
-              <h2 className="font-heading text-xl font-bold tracking-tight mb-0.5">Charbel Abou Samra</h2>
+            {/* Left: text content */}
+            <div className="md:col-span-3">
+              <div className="mb-4">
+                <p className="text-primary text-sm font-medium tracking-widest uppercase">Your instructor</p>
+                <div className="mt-1.5 h-0.5 w-8 bg-primary" />
+              </div>
+              <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight mb-1">Charbel Abou Samra</h2>
               <p className="text-foreground text-sm font-medium mb-0.5">P.Eng. Instructor</p>
-              <p className="text-muted-foreground text-sm">Faculty, Stevens Institute of Technology</p>
+              <p className="text-muted-foreground text-sm mb-6">Faculty, Stevens Institute of Technology</p>
+
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                Charbel is a licensed Professional Engineer and faculty member at Stevens Institute of Technology. He has spent years teaching engineers across Canada how to approach the P.Eng. exam with confidence, covering the technical content, exam strategy, and everything in between. His courses draw on both his academic background and his experience working through the certification process himself.
+              </p>
+
+              <div className="flex flex-col gap-3">
+                {[
+                  "Professional Engineer (P.Eng.), PEO",
+                  "Project Management Professional (PMP), PMI",
+                  "Planning and Scheduling Professional (PSP), AACEI",
+                  "Risk Management Professional (RMP), PMI",
+                  "M.Eng. Civil Engineering",
+                  "MBA, Rotman School of Management, University of Toronto",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-2">
+                    <BadgeCheck size={14} className="text-primary shrink-0 mt-0.5" />
+                    <span className="text-sm text-muted-foreground leading-snug">{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Right credentials */}
-            <div className="flex flex-col gap-3 order-3 md:pt-14">
-              {[
-                "Risk Management Professional (RMP), PMI",
-                "M.Eng. Civil Engineering",
-                "MBA, Rotman School of Management, University of Toronto",
-              ].map((item) => (
-                <div key={item} className="flex items-start gap-2">
-                  <BadgeCheck size={14} className="text-primary shrink-0 mt-0.5" />
-                  <span className="text-sm text-muted-foreground leading-snug">{item}</span>
-                </div>
-              ))}
+            {/* Right: photo */}
+            <div className="md:col-span-2">
+              <div className="rounded-2xl overflow-hidden ring-1 ring-primary/20 aspect-[3/4]">
+                <img
+                  src={instructorImage}
+                  alt="Charbel Abou Samra"
+                  className="w-full h-full object-cover object-top"
+                  loading="lazy"
+                />
+              </div>
             </div>
 
           </div>
@@ -207,7 +208,7 @@ const Index = () => {
           <p className="text-muted-foreground mb-8 max-w-md mx-auto">
             Get in touch with our team or explore courses at your own pace.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 mb-16">
+          <div className="flex flex-wrap justify-center gap-4 mb-10">
             <a
               href="/courses"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-medium px-6 py-3 rounded-lg hover:opacity-90 transition-opacity"
@@ -221,7 +222,16 @@ const Index = () => {
               Request a Callback
             </a>
           </div>
-
+          <div className="flex flex-wrap justify-center gap-8 mb-14">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <CheckCircle size={15} className="text-primary shrink-0" />
+              <span><span className="font-semibold text-foreground">100% pass rate</span>  every student passed</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <ShieldCheck size={15} className="text-primary shrink-0" />
+              <span><span className="font-semibold text-foreground">Full refund</span> if you don't pass</span>
+            </div>
+          </div>
         </div>
       </section>
 

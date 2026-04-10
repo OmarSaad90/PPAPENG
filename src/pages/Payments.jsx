@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { BookOpen, Mail, CheckCircle, ArrowRight, Phone, MapPin } from "lucide-react";
+import { BookOpen, Mail, CheckCircle, ArrowRight, Phone, MapPin, ShieldCheck } from "lucide-react";
 import Navbar from "@/components/Navbar";
 
 const steps = [
@@ -46,26 +46,38 @@ const Payments = () => {
           <p className="text-muted-foreground text-lg max-w-xl leading-relaxed">
             Enrolling is straightforward. Pick a course, reach out, and we handle everything else.
           </p>
+        </div>
+      </section>
 
-          <div className="flex flex-col sm:flex-row gap-6 sm:gap-12 mt-8">
-            <div className="flex items-start gap-3">
-              <CheckCircle size={20} className="text-primary shrink-0 mt-0.5" />
+      {/* Guarantees */}
+      <section className="py-14 border-b border-border">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <CheckCircle size={18} className="text-primary" />
+              </div>
               <div>
-                <p className="font-heading text-sm font-semibold text-foreground mb-0.5">100% pass rate</p>
+                <p className="font-heading text-base font-bold text-foreground mb-1">100% pass rate</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Every student who completed our courses passed their P.Eng. exam on the first attempt.
+                  Every student who completed a PPA P.Eng. Academy course passed their P.Eng. exam. Not most -- every single one. That track record is what we stand behind.
                 </p>
               </div>
             </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle size={20} className="text-primary shrink-0 mt-0.5" />
+
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <ShieldCheck size={18} className="text-primary" />
+              </div>
               <div>
-                <p className="font-heading text-sm font-semibold text-foreground mb-0.5">Full refund guarantee</p>
+                <p className="font-heading text-base font-bold text-foreground mb-1">Full refund guarantee</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  If you complete the course and do not pass, you get a full refund. No questions asked.
+                  If you complete the course and do not pass your P.Eng. exam, you get every dollar back. No forms, no hoops, no questions asked.
                 </p>
               </div>
             </div>
+
           </div>
         </div>
       </section>

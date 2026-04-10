@@ -31,6 +31,31 @@ const categories = [
     ],
   },
   {
+    label: "Learning Experience",
+    faqs: [
+      {
+        q: "Is there a time limit to complete a course?",
+        a: "Instructors provide personalized schedules based on your exam deadlines, so the pace is flexible and tailored to you.",
+      },
+      {
+        q: "Is instructor support available throughout the course?",
+        a: "Yes. Instructors follow up and guide students through the entire learning journey, not just during scheduled sessions.",
+      },
+      {
+        q: "Do I receive a certificate upon completion?",
+        a: "Yes. Digital certificates are provided upon request for successfully completed courses.",
+      },
+      {
+        q: "Can I access course materials offline?",
+        a: "Yes. Many materials are downloadable so you can study at your own pace without needing an internet connection.",
+      },
+      {
+        q: "What happens if I do not pass my P.Eng. exam?",
+        a: "You receive a full refund. We stand behind our courses completely -- if you completed the material and still did not pass, we will refund you in full.",
+      },
+    ],
+  },
+  {
     label: "Courses",
     faqs: [
       {
@@ -65,31 +90,6 @@ const categories = [
       {
         q: "Is there a guarantee?",
         a: "Yes. We have a 100% pass rate -- every student who has completed our courses has passed their P.Eng. exam on the first attempt. If that changes for you, you get your money back in full.",
-      },
-    ],
-  },
-  {
-    label: "Learning Experience",
-    faqs: [
-      {
-        q: "Is there a time limit to complete a course?",
-        a: "Instructors provide personalized schedules based on your exam deadlines, so the pace is flexible and tailored to you.",
-      },
-      {
-        q: "Is instructor support available throughout the course?",
-        a: "Yes. Instructors follow up and guide students through the entire learning journey, not just during scheduled sessions.",
-      },
-      {
-        q: "Do I receive a certificate upon completion?",
-        a: "Yes. Digital certificates are provided upon request for successfully completed courses.",
-      },
-      {
-        q: "Can I access course materials offline?",
-        a: "Yes. Many materials are downloadable so you can study at your own pace without needing an internet connection.",
-      },
-      {
-        q: "What happens if I do not pass my P.Eng. exam?",
-        a: "You receive a full refund. We stand behind our courses completely -- if you completed the material and still did not pass, we will refund you in full.",
       },
     ],
   },
@@ -186,7 +186,7 @@ const FAQs = () => {
       </section>
 
       {/* Still have questions */}
-      <section className="border-t border-border bg-secondary">
+      <section className="border-t border-border" style={{ backgroundColor: '#f7f4ef', backgroundImage: 'radial-gradient(circle, rgba(217, 119, 6, 0.15) 1px, transparent 1px)', backgroundSize: '24px 24px' }}>
         <div className="max-w-7xl mx-auto px-6 py-16 text-center">
           <h2 className="font-heading text-2xl md:text-3xl font-bold tracking-tight mb-2">
             Still have a question?

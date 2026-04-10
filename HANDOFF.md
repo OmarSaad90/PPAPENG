@@ -19,14 +19,22 @@ Sections (in order):
 1. Hero (Hero.jpg + white gradient overlay, text anchored left)
 2. About (two-column with Home2.webp)
 3. What We Teach (3 feature items on `#f7f4ef` warm bg with amber dot pattern, divider-separated)
-4. Instructor (centered spotlight: circular photo, name, university, 2-col credentials grid)
+4. Instructor (3-column layout: 3 credentials left | circular photo + name + titles center | 3 credentials right)
 5. CTA (`#f7f4ef` warm bg with amber dot pattern, two buttons)
 6. Footer (white bg, contact details)
 
 UI details: amber rules under section labels, icon circles on feature items, BadgeCheck icons on instructor credentials.
 
+Instructor section layout notes:
+- Grid is `items-start` with `self-center` removed from center column (photo aligns to top)
+- Left column uses `md:pt-16`, right uses `md:pt-14` to visually align with photo
+- On mobile: photo/name shows first (order-1), then left creds (order-2), then right creds (order-3)
+- Photo is `w-44 h-44` with amber ring
+- "P.Eng. Instructor" label sits between name and university line
+- Credentials split: P.Eng./PMP/PSP on left; RMP/M.Eng./MBA on right
+
 ### Courses directory — `src/pages/Courses.jsx`
-Numbered editorial list of all disciplines. Available ones link to their discipline page. Coming soon ones are muted with a badge. Header has `courses-header.webp` as background at 70% opacity.
+Numbered editorial list of all disciplines. All disciplines are available and link to their discipline page. Header has `courses-header.webp` as background at 70% opacity.
 
 ### Discipline page — `src/pages/CourseDiscipline.jsx`
 Accordion list of courses. Each course title has a lucide icon. Click to expand: amber left-border, summary, bullet topics ("Main topics covered"), Enroll Now button (links to /enroll). Smooth CSS grid animation. Discipline header has optional `headerImage` background at 70% opacity (civil has one).
@@ -108,12 +116,16 @@ Light theme:
 - `src/assets/transportation-course.webp` — downloaded, not currently used
 - `src/assets/highway-course.webp` — downloaded, not currently used
 - `src/assets/contact.webp` — downloaded, not currently used
+- `src/assets/logo1.webp` — site logo (also copied to `public/logo1.webp` for favicon use)
 
 ## Key rules
 - NO em dashes anywhere (looks like AI slop)
 - Light theme throughout
 - No card grids with white backgrounds -- prefer editorial/list layouts
 - Accordion stays text-only (no course images inside)
+
+## Favicon
+Set in `index.html` line 5: `<link rel="icon" type="image/webp" href="/logo1.webp" />`. File lives in `public/logo1.webp`. Covers all pages globally.
 
 ## What still needs to be done
 - Wire up contact form: web3forms. Waiting on client to provide web3forms access key. Once key is in, drop it into handleSubmit in `src/pages/Contact.jsx` (TODO comment is already there).
