@@ -47,6 +47,16 @@ const Index = () => {
                 Explore Courses <ArrowRight size={16} />
               </a>
             </div>
+            <div className="flex flex-wrap gap-6 mt-6">
+              <div className="flex items-center gap-2 text-sm text-foreground/80">
+                <CheckCircle size={15} className="text-primary shrink-0" />
+                <span className="font-semibold text-foreground">100% pass rate</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-foreground/80">
+                <ShieldCheck size={15} className="text-primary shrink-0" />
+                <span><span className="font-semibold text-foreground">Full refund</span> if you don't pass</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -220,16 +230,6 @@ const Index = () => {
             >
               Request a Callback
             </a>
-          </div>
-          <div className="flex flex-wrap justify-center gap-8 mb-14">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <CheckCircle size={15} className="text-primary shrink-0" />
-              <span><span className="font-semibold text-foreground">100% pass rate</span>  every student passed</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <ShieldCheck size={15} className="text-primary shrink-0" />
-              <span><span className="font-semibold text-foreground">Full refund</span> if you don't pass</span>
-            </div>
           </div>
         </div>
       </section>
