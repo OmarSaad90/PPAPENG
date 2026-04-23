@@ -12,18 +12,30 @@ The old site looks generic ("PowerPoint-like"). Goal is a clean, professional, l
 - Python 3.13 + Pillow installed (used for image download/conversion)
 - Path alias: `@/` maps to `src/`
 
+## Deployment
+- Hosted on Netlify, connected to GitHub repo (OmarSaad90/PPAPENG)
+- Auto-deploys on push to `main`
+- Custom domain: `ppapeng.ca` (primary), `www.ppapeng.ca` (redirects to primary)
+- SSL active via Let's Encrypt (auto-renews)
+- DNS managed in Porkbun
+
 ## Pages built (all complete)
 
 ### Homepage — `src/pages/Index.jsx`
 Sections (in order):
-1. Hero (Hero.jpg + white gradient overlay, text anchored left) -- subtitle ends with inline Canada flag (flagcdn.com/w40/ca.png, height 1em, verticalAlign -0.05em)
+1. Hero (Hero.jpg + white gradient overlay, text anchored left) -- subtitle ends with inline Canada flag (flagcdn.com/w40/ca.png, height 1em, verticalAlign -0.05em). Trust bar sits directly below the CTA button.
 2. About (two-column with Home2.webp)
 3. What We Teach (3 feature items on `#f7f4ef` warm bg with amber dot pattern, divider-separated)
 4. Founder (2-column: bio + credentials left | rectangular photo right)
-5. CTA (`#f7f4ef` warm bg with amber dot pattern, two buttons + trust bar)
+5. CTA (`#f7f4ef` warm bg with amber dot pattern, two buttons only)
 6. Footer (white bg, contact details)
 
 UI details: amber rules under section labels, icon circles on feature items, BadgeCheck icons on instructor credentials.
+
+Trust bar (in Hero, below buttons):
+- Two inline items: "100% pass rate" and "Full refund if you don't pass"
+- Uses CheckCircle and ShieldCheck icons from lucide-react
+- Moved from CTA section to Hero so visitors see it immediately
 
 Founder section layout notes:
 - Section label is "Founder" (not "Your instructor")
@@ -31,11 +43,6 @@ Founder section layout notes:
 - Right col (md:col-span-2) has rectangular photo with rounded corners and amber ring, aspect-ratio 3/4
 - Bio does NOT mention Stevens Institute of Technology
 - No faculty subtitle line under the title
-
-CTA trust bar notes:
-- Sits below the two CTA buttons
-- Two inline items: "100% pass rate -- every student passed" and "Full refund if you don't pass"
-- Uses CheckCircle and ShieldCheck icons from lucide-react
 
 ### Courses directory — `src/pages/Courses.jsx`
 Numbered editorial list of all disciplines. All disciplines are available and link to their discipline page. Header has `courses-header.webp` as background at 70% opacity.
@@ -81,7 +88,12 @@ Category contents:
 Note: "What is PPA P.Eng. Academy" answer states it is a subsidiary of PPA Consulting, a Canadian boutique firm specializing in construction consulting and advisory services.
 
 ### Contact — `src/pages/Contact.jsx`
-Split layout: left column has "Reach us directly" label + 3 contact items (each with small amber icon next to label, large semibold value, generous spacing) + response time note. Right has form (name, email, subject dropdown, message). Success state after submit. Web3forms TODO comment ready in handleSubmit.
+Split layout: left column has "Reach us directly" label + 3 contact items (each with small amber icon next to label, large semibold value, generous spacing) + response time note. Right has form (name, email, subject dropdown, message). Success state after submit.
+
+Contact form is wired up to web3forms. Submissions go directly to `charbel.abousamrah@gmail.com`.
+- web3forms access key: `6bf93b20-49a0-431d-aeb6-9e399f17daf6`
+- Account created under `charbel.abousamrah@gmail.com`
+- Form has loading state ("Sending...") and disables button on submit to prevent double sends
 
 ## Routing — `src/App.jsx`
 - `/` → Index
@@ -96,7 +108,7 @@ Split layout: left column has "Reach us directly" label + 3 contact items (each 
 Fixed top, white/90 backdrop blur. Links (desktop + mobile): Home, Courses (with dropdown), Testimonials, Enroll, FAQs, Contact Us. "Enroll Now" CTA button top right links to /courses.
 
 ## Course data — `src/data/courses.js`
-Single source of truth. Disciplines: Civil (5 courses), Electrical (4), Mechanical (4), Mechatronics (4), Complementary Studies (1) — all `status: 'available'`.
+Single source of truth. Disciplines: Civil (5 courses), Electrical (4), Mechanical (4), Mechatronics (4), Complementary Studies (1) -- all `status: 'available'`.
 
 Course data sourced from pengacademy.com. Each discipline has a `description` tagline. Each course has `id`, `title`, `icon` (lucide component), `summary`, and `topics` array.
 
@@ -130,9 +142,23 @@ Credentials shown:
 Note: Stevens Institute is listed as a credential but is NOT mentioned in the bio paragraph and there is no faculty subtitle on the homepage.
 
 ## Email
-All site emails use: `charbelabousamrah@ppapeng.ca`
-Forwards to: `charbel.abousamrah@gmail.com` via ImprovMX.
-ImprovMX alias is configured. Porkbun DNS (MX + SPF records) still needs to be updated -- see steps.txt section 2 for exact records.
+All site display emails use: `charbel.abousamra@ppapeng.ca`
+Contact form submissions go directly to: `charbel.abousamrah@gmail.com` (via web3forms)
+Manual emails to `charbel.abousamra@ppapeng.ca` forward to `charbel.abousamrah@gmail.com` via ImprovMX.
+
+ImprovMX alias to add (if not already done): `charbel.abousamra@ppapeng.ca` → `charbel.abousamrah@gmail.com`
+
+## DNS — Porkbun (ppapeng.ca)
+All records confirmed active:
+
+| Type | Host | Value | Priority |
+|------|------|-------|----------|
+| A | @ | 75.2.60.5 | -- |
+| CNAME | www | ppapeng.netlify.app | -- |
+| MX | @ | mx1.improvmx.com | 10 |
+| MX | @ | mx2.improvmx.com | 20 |
+| TXT | @ | v=spf1 include:spf.improvmx.com ~all | -- |
+| TXT | @ | google-site-verification=ruuHQLHvAgPHzioByn4QMWmwpCWB-vywpwwcLELfaOY | -- |
 
 ## Theme — `src/index.css`
 Light theme:
@@ -174,9 +200,8 @@ Light theme:
 Set in `index.html` line 5: `<link rel="icon" type="image/webp" href="/logo1.webp" />`. File lives in `public/logo1.webp`. Covers all pages globally.
 
 ## What still needs to be done
-- Wire up contact form: web3forms. Waiting on client to provide web3forms access key. Once key is in, drop it into handleSubmit in `src/pages/Contact.jsx` (TODO comment is already there).
-- Update Porkbun DNS for email forwarding (MX + SPF) -- steps.txt section 2 has exact records.
-- Testimonials layout: complete and approved. Card grid with warm background, amber quote mark, hover lift.
+- SEO pass: meta tags, structured data, sitemap, robots.txt -- planned for next session
+- Confirm ImprovMX alias for `charbel.abousamra@ppapeng.ca` is added (new email address)
 
 ## Image plan (remaining disciplines)
 All discipline headers already have images in assets. If any are missing or need replacing, source from Pexels or Unsplash (free, no attribution). Claude can download and convert automatically via Python/Pillow. Add `headerImage` to the discipline entry in `courses.js`.

@@ -48,13 +48,13 @@ const Index = () => {
               </a>
             </div>
             <div className="flex flex-wrap gap-6 mt-6">
-              <div className="flex items-center gap-2 text-sm text-foreground/80">
-                <CheckCircle size={15} className="text-primary shrink-0" />
-                <span className="font-semibold text-foreground">100% pass rate</span>
+              <div className="flex items-center gap-2 text-[17px] text-foreground/80">
+                <CheckCircle size={17} className="text-primary shrink-0" />
+                <span className="font-bold text-foreground">100% pass rate</span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-foreground/80">
-                <ShieldCheck size={15} className="text-primary shrink-0" />
-                <span><span className="font-semibold text-foreground">Full refund</span> if you don't pass</span>
+              <div className="flex items-center gap-2 text-[17px] text-foreground/80">
+                <ShieldCheck size={17} className="text-primary shrink-0" />
+                <span><span className="font-bold text-foreground">Full refund</span> if you don't pass</span>
               </div>
             </div>
           </div>
