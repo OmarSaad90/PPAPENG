@@ -14,7 +14,7 @@ const steps = [
   {
     icon: Mail,
     title: "Reach out to enroll",
-    desc: "Contact us through the form below or email us directly at charbelabousamrah@ppapeng.ca with the course you want and your name.",
+    desc: "Contact us through the form below or email us directly at charbel.abousamra@ppapeng.ca with the course you want and your name.",
   },
   {
     icon: CheckCircle,
@@ -158,8 +158,8 @@ const Payments = () => {
           <div className="flex flex-col md:flex-row items-center justify-between text-sm text-muted-foreground gap-4">
             <span className="font-heading font-bold text-foreground">PPA P.Eng. Academy</span>
             <div className="flex flex-wrap items-center justify-center gap-6">
-              <a href="mailto:charbelabousamrah@ppapeng.ca" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
-                <Mail size={14} /> charbelabousamrah@ppapeng.ca
+              <a href="mailto:charbel.abousamra@ppapeng.ca" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+                <Mail size={14} /> charbel.abousamra@ppapeng.ca
               </a>
               <span className="inline-flex items-center gap-1.5">
                 <Phone size={14} /> +1 (437) 299-0347

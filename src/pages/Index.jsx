@@ -240,8 +240,8 @@ const Index = () => {
           <div className="flex flex-col md:flex-row items-center justify-between text-sm text-muted-foreground gap-6">
             <span className="font-heading font-bold text-foreground text-base">PPA P.Eng. Academy</span>
             <div className="flex flex-wrap items-center justify-center gap-8">
-              <a href="mailto:charbelabousamrah@ppapeng.ca" className="inline-flex items-center gap-2 hover:text-foreground transition-colors">
-                <Mail size={14} /> charbelabousamrah@ppapeng.ca
+              <a href="mailto:charbel.abousamra@ppapeng.ca" className="inline-flex items-center gap-2 hover:text-foreground transition-colors">
+                <Mail size={14} /> charbel.abousamra@ppapeng.ca
               </a>
               <span className="inline-flex items-center gap-2">
                 <Phone size={14} /> +1 (437) 299-0347

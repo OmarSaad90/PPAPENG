@@ -65,7 +65,7 @@ const categories = [
     faqs: [
       {
         q: "How do I enroll?",
-        a: "Browse our courses, then contact us through the Contact page or email us directly at charbelabousamrah@ppapeng.ca with the course you want and your name. We will confirm your spot and get you started quickly.",
+        a: "Browse our courses, then contact us through the Contact page or email us directly at charbel.abousamra@ppapeng.ca with the course you want and your name. We will confirm your spot and get you started quickly.",
       },
       {
         q: "Do you offer a refund if I do not pass?",
@@ -193,8 +193,8 @@ const FAQs = () => {
           <div className="flex flex-col md:flex-row items-center justify-between text-sm text-muted-foreground gap-4">
             <span className="font-heading font-bold text-foreground">PPA P.Eng. Academy</span>
             <div className="flex flex-wrap items-center justify-center gap-6">
-              <a href="mailto:charbelabousamrah@ppapeng.ca" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
-                <Mail size={14} /> charbelabousamrah@ppapeng.ca
+              <a href="mailto:charbel.abousamra@ppapeng.ca" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+                <Mail size={14} /> charbel.abousamra@ppapeng.ca
               </a>
               <span className="inline-flex items-center gap-1.5">
                 <Phone size={14} /> +1 (437) 299-0347
