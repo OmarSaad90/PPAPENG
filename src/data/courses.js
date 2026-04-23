@@ -20,24 +20,8 @@ export const disciplines = [
     headerImage: civilHeroImg,
     courses: [
       {
-        id: 'engineering-economics',
-        title: 'Engineering Economics',
-        icon: TrendingUp,
-        summary:
-          'Many engineers face a critical gap: the financial literacy needed to evaluate projects, manage budgets, and justify decisions to stakeholders. This course bridges that gap by covering the core economic principles that govern engineering decision-making, from analyzing cash flows and comparing investment alternatives to understanding how asset value changes over time. By the end, you will be able to assess project viability, calculate returns, and speak confidently with financial professionals.',
-        topics: [
-          'Time Value of Money (Present Worth, Future Worth, Annual Amounts)',
-          'Interest Rates, Nominal vs. Effective, and Equivalence',
-          'Investment Evaluation using IRR and MARR',
-          'Incremental Analysis for comparing multiple alternatives',
-          'Depreciation methods: Straight-Line, Declining Balance, MACRS',
-          'Replacement Analysis based on economic and physical lifespan',
-          'Cash Flow Diagrams and financial metrics for decision-making',
-        ],
-      },
-      {
         id: 'hydraulics-engineering',
-        title: 'Hydraulics Engineering',
+        title: 'Hydraulics Engineering (CIV A5)',
         icon: Waves,
         summary:
           'Water flow dynamics are at the core of infrastructure, water resources, and energy projects. This course goes beyond equations and focuses on applying fluid mechanics to real problems, teaching you to design hydraulic systems, forecast flow rates and energy losses, manage complex pipe distribution networks, and model transient events. The emphasis throughout is on practical problem-solving that has direct impact on water supply, dam safety, and efficient pumping design.',
@@ -53,7 +37,7 @@ export const disciplines = [
       },
       {
         id: 'transportation-planning-and-engineering',
-        title: 'Transportation Planning and Engineering',
+        title: 'Transportation Planning and Engineering (CIV B7)',
         icon: Navigation,
         summary:
           'This course examines how cities design transportation networks to move people and goods efficiently. It covers the planning and engineering principles behind road systems, public transit, and urban mobility, with a strong focus on demand forecasting and traffic analysis methods used in real practice. You will learn to analyze traffic inefficiencies, forecast travel demand, optimize mode selection, and assess the impact of infrastructure and policy changes.',
@@ -68,7 +52,7 @@ export const disciplines = [
       },
       {
         id: 'highway-design-construction-and-maintenance',
-        title: 'Highway Design, Construction, and Maintenance',
+        title: 'Highway Design, Construction, and Maintenance (CIV A6)',
         icon: Route,
         summary:
           'Poorly designed roads create safety hazards, inefficient traffic flow, and costly long-term maintenance. This course equips engineers with the tools to design highways that are functional, resilient, and cost-effective, covering everything from geometric layout and pavement selection to earthworks and drainage. You will graduate able to design both flexible and rigid pavements, calculate earthwork volumes, incorporate traffic loads, and apply safety-focused geometric principles.',
@@ -358,23 +342,6 @@ export const disciplines = [
           'After-tax analysis: capital cost allowance and corporate income tax',
           'Methods of financing and capital budgeting',
           'Break-even, sensitivity, and risk analyses',
-        ],
-      },
-      {
-        id: 'engineering-management',
-        title: 'Engineering Management (CS 4)',
-        icon: Briefcase,
-        summary:
-          'Managing engineering projects and organizations requires a breadth of skills that technical training alone does not provide. This course introduces management principles in the context of engineering practice, covering market research, strategic planning, risk management, and financial resource management alongside leadership and professional responsibility. Special attention is given to sustainable production and innovative business models, preparing engineers to lead organizations that balance performance with long-term responsibility.',
-        topics: [
-          'Market research, assessment, and strategic planning',
-          'Risk and change management in engineering organizations',
-          'Product, service, and process development frameworks',
-          'Engineering project and process management',
-          'Financial resource management and marketing communications',
-          'Leadership, organizational management, and professional responsibility',
-          'Sustainable production and consumption principles',
-          'Innovative business models and practical engineering implementations',
         ],
       },
     ],

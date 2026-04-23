@@ -37,7 +37,7 @@ const Index = () => {
               <span className="text-gradient">P.Eng. certification.</span>
             </h1>
             <p className="text-foreground text-lg leading-relaxed max-w-md mb-10">
-              Expert-led courses designed for aspiring Professional Engineers across every Canadian province.
+              Expert-led courses designed for aspiring Professional Engineers across every Canadian province <img src="https://flagcdn.com/w40/ca.png" alt="Canada" className="rounded-sm shadow-sm" style={{ display: 'inline', height: '1em', width: 'auto', verticalAlign: '-0.05em' }} />
             </p>
             <div className="flex flex-wrap gap-4">
               <a
@@ -155,15 +155,14 @@ const Index = () => {
             {/* Left: text content */}
             <div className="md:col-span-3">
               <div className="mb-4">
-                <p className="text-primary text-sm font-medium tracking-widest uppercase">Your instructor</p>
+                <p className="text-primary text-sm font-medium tracking-widest uppercase">Founder</p>
                 <div className="mt-1.5 h-0.5 w-8 bg-primary" />
               </div>
               <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight mb-1">Charbel Abou Samra</h2>
-              <p className="text-foreground text-sm font-medium mb-0.5">P.Eng. Instructor</p>
-              <p className="text-muted-foreground text-sm mb-6">Faculty, Stevens Institute of Technology</p>
+              <p className="text-foreground text-sm font-medium mb-6">P.Eng. Instructor</p>
 
               <p className="text-muted-foreground leading-relaxed mb-8">
-                Charbel is a licensed Professional Engineer and faculty member at Stevens Institute of Technology. He has spent years teaching engineers across Canada how to approach the P.Eng. exam with confidence, covering the technical content, exam strategy, and everything in between. His courses draw on both his academic background and his experience working through the certification process himself.
+                Charbel is a licensed Professional Engineer. He has spent years teaching engineers across Canada how to approach the P.Eng. exam with confidence, covering the technical content, exam strategy, and everything in between. His courses draw on both his academic background and his experience working through the certification process himself.
               </p>
 
               <div className="flex flex-col gap-3">

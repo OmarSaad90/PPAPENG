@@ -10,11 +10,11 @@ const categories = [
     faqs: [
       {
         q: "What is PPA P.Eng. Academy?",
-        a: "An online learning platform dedicated to helping engineers across Canada prepare for their Professional Engineer (P.Eng.) certification exams.",
+        a: "PPA P.Eng. Academy is a subsidiary of PPA Consulting, a Canadian boutique firm specializing in construction consulting and advisory services.",
       },
       {
         q: "Who can benefit from your courses?",
-        a: "Any engineer pursuing P.Eng. certification, whether you are a recent graduate or an experienced professional looking to obtain your designation.",
+        a: "Any engineer in Canada pursuing P.Eng. certification, whether you are a recent graduate entering the profession or an experienced engineer working toward your designation.",
       },
       {
         q: "Are courses province-specific?",
@@ -24,15 +24,15 @@ const categories = [
         q: "Do you offer in-person classes?",
         a: "Currently, all courses are offered as a mix of online content and workshops.",
       },
-      {
-        q: "What is your student success rate?",
-        a: "100% of our students pass their P.Eng. exams on their first attempt after completing our courses.",
-      },
     ],
   },
   {
     label: "Learning Experience",
     faqs: [
+      {
+        q: "What is your student success rate?",
+        a: "100% of our students pass their P.Eng. exams on their first attempt after completing our courses.",
+      },
       {
         q: "Is there a time limit to complete a course?",
         a: "Instructors provide personalized schedules based on your exam deadlines, so the pace is flexible and tailored to you.",
@@ -40,14 +40,6 @@ const categories = [
       {
         q: "Is instructor support available throughout the course?",
         a: "Yes. Instructors follow up and guide students through the entire learning journey, not just during scheduled sessions.",
-      },
-      {
-        q: "Do I receive a certificate upon completion?",
-        a: "Yes. Digital certificates are provided upon request for successfully completed courses.",
-      },
-      {
-        q: "Can I access course materials offline?",
-        a: "Yes. Many materials are downloadable so you can study at your own pace without needing an internet connection.",
       },
       {
         q: "What happens if I do not pass my P.Eng. exam?",
@@ -59,20 +51,12 @@ const categories = [
     label: "Courses",
     faqs: [
       {
-        q: "What engineering courses do you cover?",
-        a: "We cover all major engineering fields. Civil engineering courses are available now, with electrical, mechanical, environmental, structural, and more being added soon.",
-      },
-      {
         q: "Are courses aligned with P.Eng. exams?",
         a: "Yes. Every course is designed specifically to align with the syllabus requirements set by provincial engineering bodies across Canada.",
       },
       {
         q: "Can I take multiple courses at the same time?",
         a: "Yes, you can enroll in multiple courses simultaneously based on your schedule and learning needs.",
-      },
-      {
-        q: "What is included in a course?",
-        a: "Each course includes interactive videos, quizzes, downloadable materials, and access to live Q&A sessions with instructors.",
       },
     ],
   },
