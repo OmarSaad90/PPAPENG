@@ -310,17 +310,17 @@ const AdminInbox = ({ onClose }) => {
             <p className="text-muted-foreground text-xs text-center py-8">No conversations yet.</p>
           )}
           {conversations.map((conv) => (
-            <div key={conv.id} className={`flex items-center group transition-colors ${conv._unread ? 'bg-primary/10' : ''}`}>
+            <div key={conv.id} style={conv._unread ? { backgroundColor: '#fef3c7' } : {}} className="flex items-center group transition-colors">
               <button
                 onClick={() => { setSelected(conv); setConversations((prev) => prev.map((c) => c.id === conv.id ? { ...c, _unread: false } : c)); }}
-                className="flex-1 min-w-0 text-left px-4 py-3.5 hover:bg-primary/15 transition-colors flex items-center justify-between gap-3"
+                className="flex-1 min-w-0 text-left px-4 py-3.5 hover:bg-secondary transition-colors flex items-center justify-between gap-3"
               >
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <p className={`text-sm font-medium truncate ${conv._unread ? 'text-primary' : 'text-foreground'}`}>
+                    <p className="text-sm truncate" style={{ fontWeight: conv._unread ? 700 : 500, color: conv._unread ? '#b45309' : '#111827' }}>
                       {conv.user_name}
                     </p>
-                    {conv._unread && <span className="w-2 h-2 rounded-full bg-primary shrink-0" />}
+                    {conv._unread && <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />}
                   </div>
                   {conv.user_email && (
                     <p className="text-xs text-muted-foreground truncate">{conv.user_email}</p>
