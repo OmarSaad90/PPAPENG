@@ -379,19 +379,35 @@ const ChatWidget = () => {
 
   useEffect(() => {
     if (!admin) return;
-    const load = async () => {
-      const { data } = await supabase
-        .from('conversations')
-        .select('id');
-      if (!data) return;
-    };
-    load();
+    if (typeof Notification !== 'undefined' && Notification.permission === 'default') {
+      Notification.requestPermission();
+    }
+  }, [admin]);
+
+  useEffect(() => {
+    if (!admin) return;
+    if (unread > 0) {
+      document.title = `(${unread}) New message — PPA P.Eng. Academy`;
+    } else {
+      document.title = 'PPA P.Eng. Academy';
+    }
+    return () => { document.title = 'PPA P.Eng. Academy'; };
+  }, [unread, admin]);
+
+  useEffect(() => {
+    if (!admin) return;
 
     const channel = supabase
       .channel('widget-unread')
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, (payload) => {
         if (payload.new.sender === 'user' && !open) {
           setUnread((prev) => prev + 1);
+          if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
+            new Notification('New message — PPA Chat', {
+              body: payload.new.content,
+              icon: '/logo1.webp',
+            });
+          }
         }
       })
       .subscribe();
@@ -449,6 +465,9 @@ const ChatWidget = () => {
         onClick={() => { setOpen((prev) => !prev); setTooltip(false); }}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:opacity-90 transition-opacity flex items-center justify-center"
       >
+        {!open && unread > 0 && (
+          <span className="absolute inset-0 rounded-full bg-primary animate-ping opacity-60" />
+        )}
         {open ? <X size={22} /> : <MessageCircle size={22} />}
         {!open && unread > 0 && (
           <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-red-500 text-white text-[10px] font-bold flex items-center justify-center">
