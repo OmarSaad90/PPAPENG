@@ -83,12 +83,12 @@ const CourseDiscipline = () => {
         <meta property="og:title" content={`${discipline.name} P.Eng. Exam Prep Courses | PPA P.Eng. Academy`} />
         <meta property="og:description" content={`P.Eng. exam preparation courses for ${discipline.name.toLowerCase()} engineers across Canada. Expert-led, 100% pass rate guaranteed.`} />
         <meta property="og:url" content={`https://www.ppapeng.ca/courses/${disciplineId}`} />
-        <meta property="og:image" content="https://www.ppapeng.ca/logo1.webp" />
+        <meta property="og:image" content="https://www.ppapeng.ca/og-image.png" />
         <meta property="og:locale" content="en_CA" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${discipline.name} P.Eng. Exam Prep Courses | PPA P.Eng. Academy`} />
         <meta name="twitter:description" content={`P.Eng. exam preparation courses for ${discipline.name.toLowerCase()} engineers across Canada.`} />
-        <meta name="twitter:image" content="https://www.ppapeng.ca/logo1.webp" />
+        <meta name="twitter:image" content="https://www.ppapeng.ca/og-image.png" />
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(courseListSchema)}</script>
       </Helmet>

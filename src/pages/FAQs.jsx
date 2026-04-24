@@ -143,12 +143,12 @@ const FAQs = () => {
         <meta property="og:title" content="P.Eng. Exam Prep FAQs | PPA P.Eng. Academy" />
         <meta property="og:description" content="Frequently asked questions about P.Eng. exam preparation, course content, enrollment, and certification requirements across Canadian provinces." />
         <meta property="og:url" content="https://www.ppapeng.ca/faqs" />
-        <meta property="og:image" content="https://www.ppapeng.ca/logo1.webp" />
+        <meta property="og:image" content="https://www.ppapeng.ca/og-image.png" />
         <meta property="og:locale" content="en_CA" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="P.Eng. Exam Prep FAQs | PPA P.Eng. Academy" />
         <meta name="twitter:description" content="Frequently asked questions about P.Eng. exam preparation and certification in Canada." />
-        <meta name="twitter:image" content="https://www.ppapeng.ca/logo1.webp" />
+        <meta name="twitter:image" content="https://www.ppapeng.ca/og-image.png" />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
       <Navbar />
