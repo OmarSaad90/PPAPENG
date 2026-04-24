@@ -31,12 +31,19 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>Contact Us | PPA P.Eng. Academy</title>
-        <meta name="description" content="Get in touch with PPA P.Eng. Academy. Reach us by email or phone for questions about P.Eng. exam preparation courses, enrollment, and certification guidance across Canada." />
+        <title>Contact PPA P.Eng. Academy | P.Eng. Exam Prep Canada</title>
+        <meta name="description" content="Contact PPA P.Eng. Academy for questions about P.Eng. exam preparation courses, enrollment, and certification guidance. Serving engineers across Canada." />
         <link rel="canonical" href="https://www.ppapeng.ca/contact" />
-        <meta property="og:title" content="Contact Us | PPA P.Eng. Academy" />
-        <meta property="og:description" content="Contact PPA P.Eng. Academy for questions about P.Eng. exam preparation courses and enrollment." />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Contact PPA P.Eng. Academy | P.Eng. Exam Prep Canada" />
+        <meta property="og:description" content="Contact PPA P.Eng. Academy for questions about P.Eng. exam preparation courses and enrollment across Canada." />
         <meta property="og:url" content="https://www.ppapeng.ca/contact" />
+        <meta property="og:image" content="https://www.ppapeng.ca/logo.png" />
+        <meta property="og:locale" content="en_CA" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact PPA P.Eng. Academy | P.Eng. Exam Prep Canada" />
+        <meta name="twitter:description" content="Contact PPA P.Eng. Academy for questions about P.Eng. exam preparation courses and enrollment." />
+        <meta name="twitter:image" content="https://www.ppapeng.ca/logo.png" />
       </Helmet>
       <Navbar />
 

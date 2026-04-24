@@ -118,15 +118,38 @@ const FAQs = () => {
     return next;
   });
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": categories.flatMap(cat =>
+      cat.faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a,
+        },
+      }))
+    ),
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>FAQs | PPA P.Eng. Academy</title>
-        <meta name="description" content="Answers to frequently asked questions about P.Eng. exam preparation, course content, enrollment, and certification requirements across Canadian provinces." />
+        <title>P.Eng. Exam Prep FAQs | PPA P.Eng. Academy</title>
+        <meta name="description" content="P.Eng. exam prep FAQs. Pass rate, refund guarantee, course content, enrollment, and provincial certification requirements for engineers across Canada." />
         <link rel="canonical" href="https://www.ppapeng.ca/faqs" />
-        <meta property="og:title" content="FAQs | PPA P.Eng. Academy" />
-        <meta property="og:description" content="Answers to frequently asked questions about P.Eng. exam preparation and certification in Canada." />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="P.Eng. Exam Prep FAQs | PPA P.Eng. Academy" />
+        <meta property="og:description" content="Frequently asked questions about P.Eng. exam preparation, course content, enrollment, and certification requirements across Canadian provinces." />
         <meta property="og:url" content="https://www.ppapeng.ca/faqs" />
+        <meta property="og:image" content="https://www.ppapeng.ca/logo.png" />
+        <meta property="og:locale" content="en_CA" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="P.Eng. Exam Prep FAQs | PPA P.Eng. Academy" />
+        <meta name="twitter:description" content="Frequently asked questions about P.Eng. exam preparation and certification in Canada." />
+        <meta name="twitter:image" content="https://www.ppapeng.ca/logo.png" />
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
       <Navbar />
 

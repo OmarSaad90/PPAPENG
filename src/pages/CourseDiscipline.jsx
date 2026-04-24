@@ -28,15 +28,69 @@ const CourseDiscipline = () => {
     );
   }
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.ppapeng.ca/" },
+      { "@type": "ListItem", "position": 2, "name": "Courses", "item": "https://www.ppapeng.ca/courses" },
+      { "@type": "ListItem", "position": 3, "name": discipline.name, "item": `https://www.ppapeng.ca/courses/${disciplineId}` },
+    ],
+  };
+
+  const courseListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": `${discipline.name} P.Eng. Exam Preparation Courses`,
+    "url": `https://www.ppapeng.ca/courses/${disciplineId}`,
+    "numberOfItems": discipline.courses.length,
+    "itemListElement": discipline.courses.map((course, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Course",
+        "name": course.title,
+        "description": course.summary,
+        "url": `https://www.ppapeng.ca/courses/${disciplineId}`,
+        "provider": {
+          "@type": "EducationalOrganization",
+          "name": "PPA P.Eng. Academy",
+          "url": "https://www.ppapeng.ca",
+        },
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "online",
+          "inLanguage": "en",
+          "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "url": "https://www.ppapeng.ca/enroll",
+          },
+        },
+        "teaches": course.topics ? course.topics.join(", ") : undefined,
+        "educationalLevel": "Professional Certification",
+      },
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>{discipline.name} P.Eng. Courses | PPA P.Eng. Academy</title>
-        <meta name="description" content={`P.Eng. exam preparation courses for ${discipline.name.toLowerCase()} engineers across Canada. ${discipline.description} Aligned with PEO, APEGA, APEGBC, and all Canadian provincial engineering bodies.`} />
+        <title>{discipline.name} P.Eng. Exam Prep Courses | PPA P.Eng. Academy</title>
+        <meta name="description" content={`${discipline.name} P.Eng. exam prep in Canada. ${discipline.description} 100% pass rate. All Canadian provinces.`} />
         <link rel="canonical" href={`https://www.ppapeng.ca/courses/${disciplineId}`} />
-        <meta property="og:title" content={`${discipline.name} P.Eng. Courses | PPA P.Eng. Academy`} />
-        <meta property="og:description" content={`P.Eng. exam preparation courses for ${discipline.name.toLowerCase()} engineers across Canada.`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`${discipline.name} P.Eng. Exam Prep Courses | PPA P.Eng. Academy`} />
+        <meta property="og:description" content={`P.Eng. exam preparation courses for ${discipline.name.toLowerCase()} engineers across Canada. Expert-led, 100% pass rate guaranteed.`} />
         <meta property="og:url" content={`https://www.ppapeng.ca/courses/${disciplineId}`} />
+        <meta property="og:image" content="https://www.ppapeng.ca/logo.png" />
+        <meta property="og:locale" content="en_CA" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${discipline.name} P.Eng. Exam Prep Courses | PPA P.Eng. Academy`} />
+        <meta name="twitter:description" content={`P.Eng. exam preparation courses for ${discipline.name.toLowerCase()} engineers across Canada.`} />
+        <meta name="twitter:image" content="https://www.ppapeng.ca/logo.png" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(courseListSchema)}</script>
       </Helmet>
       <Navbar />
 

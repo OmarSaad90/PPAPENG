@@ -27,12 +27,19 @@ const Payments = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>Enroll | PPA P.Eng. Academy</title>
-        <meta name="description" content="Enrolling in PPA P.Eng. Academy is simple. Browse our courses, contact us, and we handle the rest. 100% pass rate guaranteed or your money back." />
+        <title>Enroll in P.Eng. Exam Prep Courses | PPA P.Eng. Academy</title>
+        <meta name="description" content="Enroll in P.Eng. exam prep courses at PPA P.Eng. Academy. Email-based enrollment, 100% pass rate, full refund guarantee if you do not pass." />
         <link rel="canonical" href="https://www.ppapeng.ca/enroll" />
-        <meta property="og:title" content="Enroll | PPA P.Eng. Academy" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Enroll in P.Eng. Exam Prep Courses | PPA P.Eng. Academy" />
         <meta property="og:description" content="Simple enrollment for P.Eng. exam preparation courses. 100% pass rate guaranteed or your money back." />
         <meta property="og:url" content="https://www.ppapeng.ca/enroll" />
+        <meta property="og:image" content="https://www.ppapeng.ca/logo.png" />
+        <meta property="og:locale" content="en_CA" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Enroll in P.Eng. Exam Prep Courses | PPA P.Eng. Academy" />
+        <meta name="twitter:description" content="Simple enrollment for P.Eng. exam preparation courses. 100% pass rate guaranteed or your money back." />
+        <meta name="twitter:image" content="https://www.ppapeng.ca/logo.png" />
       </Helmet>
       <Navbar />
 

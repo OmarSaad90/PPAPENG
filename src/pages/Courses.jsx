@@ -13,12 +13,19 @@ const Courses = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>All P.Eng. Courses | PPA P.Eng. Academy</title>
-        <meta name="description" content="Browse all P.Eng. exam preparation courses by engineering field. Civil, electrical, mechanical, mechatronics, and complementary studies courses available for engineers across Canada." />
+        <title>P.Eng. Exam Preparation Courses | PPA P.Eng. Academy</title>
+        <meta name="description" content="All P.Eng. exam prep courses by discipline. Civil, electrical, mechanical, mechatronics, engineering economics. PEO, APEGA, APEGBC. All Canadian provinces." />
         <link rel="canonical" href="https://www.ppapeng.ca/courses" />
-        <meta property="og:title" content="All P.Eng. Courses | PPA P.Eng. Academy" />
-        <meta property="og:description" content="Browse all P.Eng. exam preparation courses by engineering field. Available across all Canadian provinces." />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="P.Eng. Exam Preparation Courses | PPA P.Eng. Academy" />
+        <meta property="og:description" content="Browse all P.Eng. exam preparation courses by engineering discipline. Available for engineers across all Canadian provinces." />
         <meta property="og:url" content="https://www.ppapeng.ca/courses" />
+        <meta property="og:image" content="https://www.ppapeng.ca/logo.png" />
+        <meta property="og:locale" content="en_CA" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="P.Eng. Exam Preparation Courses | PPA P.Eng. Academy" />
+        <meta name="twitter:description" content="Browse all P.Eng. exam preparation courses by engineering discipline. Aligned with PEO, APEGA, and all Canadian provincial engineering bodies." />
+        <meta name="twitter:image" content="https://www.ppapeng.ca/logo.png" />
       </Helmet>
       <Navbar />
 

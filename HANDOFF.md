@@ -200,8 +200,12 @@ Light theme:
 Set in `index.html` line 5: `<link rel="icon" type="image/webp" href="/logo1.webp" />`. File lives in `public/logo1.webp`. Covers all pages globally.
 
 ## What still needs to be done
-- SEO pass: meta tags, structured data, sitemap, robots.txt -- planned for next session
-- Confirm ImprovMX alias for `charbel.abousamra@ppapeng.ca` is added (new email address)
+- Submit sitemap to Google Search Console: https://search.google.com/search-console
+- Create a proper 1200x630 OG social share image and replace `/logo.png` in og:image tags across all pages
+
+## Completed
+- SEO pass done (2026-04-24): meta tags, structured data, sitemap, robots.txt all complete
+- ImprovMX alias confirmed for `charbel.abousamra@ppapeng.ca`
 
 ## Image plan (remaining disciplines)
 All discipline headers already have images in assets. If any are missing or need replacing, source from Pexels or Unsplash (free, no attribution). Claude can download and convert automatically via Python/Pillow. Add `headerImage` to the discipline entry in `courses.js`.

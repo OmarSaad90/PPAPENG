@@ -46,15 +46,44 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  const reviewSchema = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "PPA P.Eng. Academy",
+    "url": "https://www.ppapeng.ca",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": testimonials.length.toString(),
+      "reviewCount": testimonials.length.toString(),
+    },
+    "review": testimonials.map(t => ({
+      "@type": "Review",
+      "author": { "@type": "Person", "name": t.name },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": t.quote,
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>Testimonials | PPA P.Eng. Academy</title>
-        <meta name="description" content="Hear from engineers who passed their P.Eng. exam with PPA P.Eng. Academy. Real results from real students across Canada." />
+        <title>Student Success Stories | P.Eng. Exam Prep | PPA P.Eng. Academy</title>
+        <meta name="description" content="Real P.Eng. exam success stories from engineers across Canada. 100% first-attempt pass rate. Civil, transportation, hydraulics, and economics courses." />
         <link rel="canonical" href="https://www.ppapeng.ca/testimonials" />
-        <meta property="og:title" content="Testimonials | PPA P.Eng. Academy" />
-        <meta property="og:description" content="Hear from engineers who passed their P.Eng. exam with PPA P.Eng. Academy." />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Student Success Stories | PPA P.Eng. Academy" />
+        <meta property="og:description" content="Engineers across Canada share their results after passing the P.Eng. exam with PPA P.Eng. Academy. 100% pass rate." />
         <meta property="og:url" content="https://www.ppapeng.ca/testimonials" />
+        <meta property="og:image" content="https://www.ppapeng.ca/logo.png" />
+        <meta property="og:locale" content="en_CA" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Student Success Stories | PPA P.Eng. Academy" />
+        <meta name="twitter:description" content="Engineers across Canada share their results after passing the P.Eng. exam with PPA P.Eng. Academy." />
+        <meta name="twitter:image" content="https://www.ppapeng.ca/logo.png" />
+        <script type="application/ld+json">{JSON.stringify(reviewSchema)}</script>
       </Helmet>
       <Navbar />
 
