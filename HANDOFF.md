@@ -200,20 +200,24 @@ Light theme:
 Set in `index.html` line 5: `<link rel="icon" type="image/webp" href="/logo1.webp" />`. File lives in `public/logo1.webp`. Covers all pages globally.
 
 ## What still needs to be done
-- Create a proper 1200x630 OG social share image and replace `logo1.webp` in og:image tags across all pages
 - Check GSC Coverage and Performance reports in 2-3 weeks for indexing status and keyword impressions
 - Get backlinks: Charbel LinkedIn post linking to ppapeng.ca, PPA Consulting website link, engineering directories
 - Upgrade admin auth to Supabase Auth (email+password) if tighter security is needed in the future
 
 ## Completed
+- OG social share image done (2026-04-24): `public/og-image.png` (1200x630), applied to all 7 pages (og:image + twitter:image)
 - SEO pass done (2026-04-24): meta tags, structured data (FAQPage, AggregateRating, BreadcrumbList, Course, Person, WebSite), sitemap, robots.txt, canonical tags, OG/Twitter tags on all pages
 - ImprovMX alias confirmed for `charbel.abousamra@ppapeng.ca`
 - Google Search Console verified (2026-04-24): sitemap submitted, all pages requested for indexing
 - Google Analytics 4 set up (2026-04-24): Measurement ID G-SKVCR5TTEC, tag in index.html
 - GA4 access: Charbel (charbel.abousamrah@gmail.com) has Editor access at account level, sees all properties
-- Real-time chat widget built (2026-04-24): Supabase backend, floating bubble on all pages
-  - Users: name + optional email, then live chat
-  - Admin: visit /admin once to log in, inbox appears in chat bubble on all pages with unread badge
+- Real-time chat widget built and fully debugged (2026-04-24):
+  - Supabase backend; `messages` and `conversations` tables added to `supabase_realtime` publication (required for realtime to work)
+  - Users: name + optional email, then live chat. Conversation ID generated client-side (crypto.randomUUID) to avoid RLS SELECT issues
+  - Admin: visit /admin once to log in; full page reload on login/logout so widget initializes correctly
+  - Admin inbox: unread counts tracked in ChatWidget (always mounted) so badges persist whether inbox is open or closed; amber highlight + message count badge per conversation; re-fetches conversation list and open conversation messages whenever new message detected
+  - Admin notifications: pulsing ring on bubble, tab title unread count, OS browser notification (requires Allow permission on first load)
+  - Admin can delete conversations (trash icon on hover, confirms before deleting)
   - Tooltip "Have a question? Chat with us" appears after 3s for users
   - Supabase project: oisvocgopuswtdfhkksm.supabase.co
   - Admin password stored in VITE_ADMIN_PASSWORD (Netlify env var + local .env)
