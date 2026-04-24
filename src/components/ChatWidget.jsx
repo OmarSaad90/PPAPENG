@@ -386,6 +386,9 @@ const ChatWidget = () => {
   const [admin] = useState(isAdmin);
   const [unread, setUnread] = useState(0);
   const [tooltip, setTooltip] = useState(false);
+  const openRef = useRef(false);
+
+  useEffect(() => { openRef.current = open; }, [open]);
 
   useEffect(() => {
     if (admin) return;
@@ -416,7 +419,7 @@ const ChatWidget = () => {
     const channel = supabase
       .channel('widget-unread')
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, (payload) => {
-        if (payload.new.sender === 'user' && !open) {
+        if (payload.new.sender === 'user' && !openRef.current) {
           setUnread((prev) => prev + 1);
           if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
             new Notification('New message — PPA Chat', {
@@ -429,7 +432,7 @@ const ChatWidget = () => {
       .subscribe();
 
     return () => supabase.removeChannel(channel);
-  }, [admin, open]);
+  }, [admin]); // stable — openRef.current is always current without re-subscribing
 
   useEffect(() => {
     if (open) setUnread(0);
