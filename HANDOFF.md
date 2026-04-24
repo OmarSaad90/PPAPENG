@@ -200,12 +200,24 @@ Light theme:
 Set in `index.html` line 5: `<link rel="icon" type="image/webp" href="/logo1.webp" />`. File lives in `public/logo1.webp`. Covers all pages globally.
 
 ## What still needs to be done
-- Submit sitemap to Google Search Console: https://search.google.com/search-console
-- Create a proper 1200x630 OG social share image and replace `/logo.png` in og:image tags across all pages
+- Create a proper 1200x630 OG social share image and replace `logo1.webp` in og:image tags across all pages
+- Check GSC Coverage and Performance reports in 2-3 weeks for indexing status and keyword impressions
+- Get backlinks: Charbel LinkedIn post linking to ppapeng.ca, PPA Consulting website link, engineering directories
+- Upgrade admin auth to Supabase Auth (email+password) if tighter security is needed in the future
 
 ## Completed
-- SEO pass done (2026-04-24): meta tags, structured data, sitemap, robots.txt all complete
+- SEO pass done (2026-04-24): meta tags, structured data (FAQPage, AggregateRating, BreadcrumbList, Course, Person, WebSite), sitemap, robots.txt, canonical tags, OG/Twitter tags on all pages
 - ImprovMX alias confirmed for `charbel.abousamra@ppapeng.ca`
+- Google Search Console verified (2026-04-24): sitemap submitted, all pages requested for indexing
+- Google Analytics 4 set up (2026-04-24): Measurement ID G-SKVCR5TTEC, tag in index.html
+- GA4 access: Charbel (charbel.abousamrah@gmail.com) has Editor access at account level, sees all properties
+- Real-time chat widget built (2026-04-24): Supabase backend, floating bubble on all pages
+  - Users: name + optional email, then live chat
+  - Admin: visit /admin once to log in, inbox appears in chat bubble on all pages with unread badge
+  - Tooltip "Have a question? Chat with us" appears after 3s for users
+  - Supabase project: oisvocgopuswtdfhkksm.supabase.co
+  - Admin password stored in VITE_ADMIN_PASSWORD (Netlify env var + local .env)
+  - .env is gitignored -- never pushed to GitHub
 
 ## Image plan (remaining disciplines)
 All discipline headers already have images in assets. If any are missing or need replacing, source from Pexels or Unsplash (free, no attribution). Claude can download and convert automatically via Python/Pillow. Add `headerImage` to the discipline entry in `courses.js`.
