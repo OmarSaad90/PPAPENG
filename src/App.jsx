@@ -7,6 +7,8 @@ import Payments from './pages/Payments';
 import FAQs from './pages/FAQs';
 import Contact from './pages/Contact';
 import Testimonials from './pages/Testimonials';
+import Admin from './pages/Admin';
+import ChatWidget from './components/ChatWidget';
 
 function App() {
   return (
@@ -19,7 +21,9 @@ function App() {
         <Route path="/testimonials" element={<Testimonials />} />
         <Route path="/faqs" element={<FAQs />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
+      <ChatWidget />
     </BrowserRouter>
   );
 }
