@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { MessageCircle, X, Send, ArrowLeft, LogOut } from 'lucide-react';
+import { MessageCircle, X, Send, ArrowLeft, LogOut, Trash2 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 
 const isAdmin = () => localStorage.getItem('ppa_admin') === 'true';
@@ -257,7 +257,15 @@ const AdminInbox = ({ onClose }) => {
 
   const logout = () => {
     localStorage.removeItem('ppa_admin');
-    onClose();
+    window.location.reload();
+  };
+
+  const deleteConversation = async (convId) => {
+    if (!window.confirm('Delete this conversation? This cannot be undone.')) return;
+    await supabase.from('messages').delete().eq('conversation_id', convId);
+    await supabase.from('conversations').delete().eq('id', convId);
+    setConversations((prev) => prev.filter((c) => c.id !== convId));
+    if (selected?.id === convId) setSelected(null);
   };
 
   const unreadCount = conversations.filter((c) => c._unread).length;
@@ -286,24 +294,32 @@ const AdminInbox = ({ onClose }) => {
             <p className="text-muted-foreground text-xs text-center py-8">No conversations yet.</p>
           )}
           {conversations.map((conv) => (
-            <button
-              key={conv.id}
-              onClick={() => { setSelected(conv); setConversations((prev) => prev.map((c) => c.id === conv.id ? { ...c, _unread: false } : c)); }}
-              className="w-full text-left px-4 py-3.5 hover:bg-secondary transition-colors flex items-center justify-between gap-3"
-            >
-              <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <p className={`text-sm font-medium truncate ${conv._unread ? 'text-primary' : 'text-foreground'}`}>
-                    {conv.user_name}
-                  </p>
-                  {conv._unread && <span className="w-2 h-2 rounded-full bg-primary shrink-0" />}
+            <div key={conv.id} className="flex items-center group">
+              <button
+                onClick={() => { setSelected(conv); setConversations((prev) => prev.map((c) => c.id === conv.id ? { ...c, _unread: false } : c)); }}
+                className="flex-1 min-w-0 text-left px-4 py-3.5 hover:bg-secondary transition-colors flex items-center justify-between gap-3"
+              >
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <p className={`text-sm font-medium truncate ${conv._unread ? 'text-primary' : 'text-foreground'}`}>
+                      {conv.user_name}
+                    </p>
+                    {conv._unread && <span className="w-2 h-2 rounded-full bg-primary shrink-0" />}
+                  </div>
+                  {conv.user_email && (
+                    <p className="text-xs text-muted-foreground truncate">{conv.user_email}</p>
+                  )}
                 </div>
-                {conv.user_email && (
-                  <p className="text-xs text-muted-foreground truncate">{conv.user_email}</p>
-                )}
-              </div>
-              <p className="text-xs text-muted-foreground shrink-0">{formatDate(conv.last_message_at)}</p>
-            </button>
+                <p className="text-xs text-muted-foreground shrink-0">{formatDate(conv.last_message_at)}</p>
+              </button>
+              <button
+                onClick={() => deleteConversation(conv.id)}
+                className="opacity-0 group-hover:opacity-100 transition-opacity px-3 py-3.5 text-muted-foreground hover:text-red-500 shrink-0"
+                title="Delete conversation"
+              >
+                <Trash2 size={14} />
+              </button>
+            </div>
           ))}
         </div>
       ) : (

@@ -1,18 +1,16 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
 
 const Admin = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === ADMIN_PASSWORD) {
       localStorage.setItem('ppa_admin', 'true');
-      navigate('/');
+      window.location.href = '/';
     } else {
       setError(true);
     }
