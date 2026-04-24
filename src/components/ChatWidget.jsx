@@ -72,14 +72,13 @@ const UserChat = ({ onClose }) => {
 
   const startChat = async (e) => {
     e.preventDefault();
-    const { data, error } = await supabase
+    const id = crypto.randomUUID();
+    const { error } = await supabase
       .from('conversations')
-      .insert({ user_name: name, user_email: email || null })
-      .select()
-      .single();
-    if (error || !data) return;
-    localStorage.setItem('ppa_conversation', JSON.stringify({ id: data.id, name }));
-    setConversationId(data.id);
+      .insert({ id, user_name: name, user_email: email || null });
+    if (error) return;
+    localStorage.setItem('ppa_conversation', JSON.stringify({ id, name }));
+    setConversationId(id);
     setStep('chat');
   };
 
@@ -91,7 +90,18 @@ const UserChat = ({ onClose }) => {
     const optimistic = { id: `opt-${Date.now()}`, conversation_id: conversationId, sender: 'user', content, created_at: new Date().toISOString() };
     setMessages((prev) => [...prev, optimistic]);
     setInput('');
-    await supabase.from('messages').insert({ conversation_id: conversationId, sender: 'user', content });
+    const { error } = await supabase.from('messages').insert({ conversation_id: conversationId, sender: 'user', content });
+    if (error) {
+      setMessages((prev) => prev.filter((m) => m.id !== optimistic.id));
+      if (error.code === '23503' || error.status === 409) {
+        localStorage.removeItem('ppa_conversation');
+        setConversationId(null);
+        setMessages([]);
+        setStep('form');
+      }
+      setSending(false);
+      return;
+    }
     await supabase.from('conversations').update({ last_message_at: new Date().toISOString() }).eq('id', conversationId);
     setSending(false);
   };
