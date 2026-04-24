@@ -266,6 +266,18 @@ const AdminInbox = ({ onClose, unreadCounts, onConvRead }) => {
       .then(({ data }) => setMessages(data || []));
   }, [selected]);
 
+  // Re-fetch messages whenever a new message is detected (unreadCounts is reliably updated
+  // by widget-unread channel even when admin-conversations realtime is unreliable)
+  useEffect(() => {
+    if (!selectedRef.current?.id) return;
+    supabase
+      .from('messages')
+      .select('*')
+      .eq('conversation_id', selectedRef.current.id)
+      .order('created_at', { ascending: true })
+      .then(({ data }) => { if (data) setMessages(data); });
+  }, [unreadCounts]);
+
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
