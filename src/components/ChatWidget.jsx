@@ -49,7 +49,9 @@ const UserChat = ({ onClose }) => {
         table: 'messages',
         filter: `conversation_id=eq.${conversationId}`,
       }, (payload) => {
-        setMessages((prev) => [...prev, payload.new]);
+        setMessages((prev) =>
+          prev.some((m) => m.id === payload.new.id) ? prev : [...prev, payload.new]
+        );
       })
       .subscribe();
 
@@ -77,11 +79,12 @@ const UserChat = ({ onClose }) => {
     e.preventDefault();
     if (!input.trim() || sending) return;
     setSending(true);
-    await supabase.from('messages').insert({
+    const { data: newMsg } = await supabase.from('messages').insert({
       conversation_id: conversationId,
       sender: 'user',
       content: input.trim(),
-    });
+    }).select().single();
+    if (newMsg) setMessages((prev) => [...prev, newMsg]);
     await supabase
       .from('conversations')
       .update({ last_message_at: new Date().toISOString() })
@@ -210,7 +213,9 @@ const AdminInbox = ({ onClose }) => {
           ).sort((a, b) => new Date(b.last_message_at) - new Date(a.last_message_at))
         );
         if (payload.new.conversation_id === selected?.id) {
-          setMessages((prev) => [...prev, payload.new]);
+          setMessages((prev) =>
+            prev.some((m) => m.id === payload.new.id) ? prev : [...prev, payload.new]
+          );
         }
       })
       .subscribe();
@@ -236,11 +241,12 @@ const AdminInbox = ({ onClose }) => {
     e.preventDefault();
     if (!input.trim() || sending || !selected) return;
     setSending(true);
-    await supabase.from('messages').insert({
+    const { data: newMsg } = await supabase.from('messages').insert({
       conversation_id: selected.id,
       sender: 'admin',
       content: input.trim(),
-    });
+    }).select().single();
+    if (newMsg) setMessages((prev) => [...prev, newMsg]);
     await supabase
       .from('conversations')
       .update({ last_message_at: new Date().toISOString() })
