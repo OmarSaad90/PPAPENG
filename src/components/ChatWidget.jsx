@@ -208,6 +208,14 @@ const AdminInbox = ({ onClose, unreadCounts, onConvRead }) => {
   useEffect(() => { selectedRef.current = selected; }, [selected]);
 
   useEffect(() => {
+    supabase
+      .from('conversations')
+      .select('*')
+      .order('last_message_at', { ascending: false })
+      .then(({ data }) => { if (data) setConversations(data); });
+  }, [unreadCounts]);
+
+  useEffect(() => {
     const load = async () => {
       const { data } = await supabase
         .from('conversations')
