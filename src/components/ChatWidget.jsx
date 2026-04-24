@@ -347,6 +347,13 @@ const ChatWidget = () => {
   const [open, setOpen] = useState(false);
   const [admin] = useState(isAdmin);
   const [unread, setUnread] = useState(0);
+  const [tooltip, setTooltip] = useState(false);
+
+  useEffect(() => {
+    if (admin) return;
+    const timer = setTimeout(() => setTooltip(true), 3000);
+    return () => clearTimeout(timer);
+  }, [admin]);
 
   useEffect(() => {
     if (!admin) return;
@@ -398,8 +405,26 @@ const ChatWidget = () => {
         </div>
       )}
 
+      {tooltip && !open && !admin && (
+        <div
+          className="fixed bottom-24 right-6 z-50 cursor-pointer"
+          onClick={() => { setOpen(true); setTooltip(false); }}
+        >
+          <div className="bg-foreground text-background text-sm font-medium px-4 py-2.5 rounded-2xl rounded-br-sm shadow-lg whitespace-nowrap">
+            Have a question? Chat with us
+          </div>
+          <div className="absolute -bottom-1.5 right-5 w-3 h-3 bg-foreground rotate-45 rounded-sm" />
+          <button
+            onClick={(e) => { e.stopPropagation(); setTooltip(false); }}
+            className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-muted-foreground text-background text-xs flex items-center justify-center hover:opacity-80 transition-opacity"
+          >
+            ×
+          </button>
+        </div>
+      )}
+
       <button
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={() => { setOpen((prev) => !prev); setTooltip(false); }}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-lg hover:opacity-90 transition-opacity flex items-center justify-center"
       >
         {open ? <X size={22} /> : <MessageCircle size={22} />}
