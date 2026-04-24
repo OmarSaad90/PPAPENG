@@ -196,13 +196,16 @@ const UserChat = ({ onClose }) => {
 
 // ─── Admin inbox ──────────────────────────────────────────────────────────────
 
-const AdminInbox = ({ onClose }) => {
+const AdminInbox = ({ onClose, unreadCounts, onConvRead }) => {
   const [conversations, setConversations] = useState([]);
   const [selected, setSelected] = useState(null);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [sending, setSending] = useState(false);
   const bottomRef = useRef(null);
+  const selectedRef = useRef(null);
+
+  useEffect(() => { selectedRef.current = selected; }, [selected]);
 
   useEffect(() => {
     const load = async () => {
@@ -221,11 +224,12 @@ const AdminInbox = ({ onClose }) => {
         setConversations((prev) =>
           prev.map((c) =>
             c.id === payload.new.conversation_id
-              ? { ...c, last_message_at: payload.new.created_at, _unread: payload.new.sender === 'user' }
+              ? { ...c, last_message_at: payload.new.created_at }
               : c
           ).sort((a, b) => new Date(b.last_message_at) - new Date(a.last_message_at))
         );
-        if (payload.new.conversation_id === selected?.id) {
+        if (payload.new.conversation_id === selectedRef.current?.id) {
+          if (payload.new.sender === 'user') onConvRead?.(payload.new.conversation_id);
           setMessages((prev) => {
             const optIdx = prev.findIndex(
               (m) => String(m.id).startsWith('opt-') && m.sender === payload.new.sender && m.content === payload.new.content
@@ -242,7 +246,7 @@ const AdminInbox = ({ onClose }) => {
       .subscribe();
 
     return () => supabase.removeChannel(channel);
-  }, [selected]);
+  }, []);
 
   useEffect(() => {
     if (!selected) return;
@@ -284,7 +288,7 @@ const AdminInbox = ({ onClose }) => {
     if (selected?.id === convId) setSelected(null);
   };
 
-  const unreadCount = conversations.filter((c) => c._unread).length;
+  const totalUnread = Object.values(unreadCounts).reduce((a, b) => a + b, 0);
 
   return (
     <div className="flex flex-col h-full">
@@ -296,7 +300,7 @@ const AdminInbox = ({ onClose }) => {
             </button>
           )}
           <p className="font-heading font-semibold text-foreground text-sm">
-            {selected ? selected.user_name : `Inbox ${unreadCount > 0 ? `(${unreadCount})` : ''}`}
+            {selected ? selected.user_name : `Inbox ${totalUnread > 0 ? `(${totalUnread})` : ''}`}
           </p>
         </div>
         <button onClick={logout} className="text-muted-foreground hover:text-foreground transition-colors" title="Sign out">
@@ -309,18 +313,24 @@ const AdminInbox = ({ onClose }) => {
           {conversations.length === 0 && (
             <p className="text-muted-foreground text-xs text-center py-8">No conversations yet.</p>
           )}
-          {conversations.map((conv) => (
-            <div key={conv.id} style={conv._unread ? { backgroundColor: '#fef3c7' } : {}} className="flex items-center group transition-colors">
+          {conversations.map((conv) => {
+            const count = unreadCounts[conv.id] || 0;
+            return (
+            <div key={conv.id} style={count > 0 ? { backgroundColor: '#fef3c7' } : {}} className="flex items-center group transition-colors">
               <button
-                onClick={() => { setSelected(conv); setConversations((prev) => prev.map((c) => c.id === conv.id ? { ...c, _unread: false } : c)); }}
+                onClick={() => { setSelected(conv); onConvRead?.(conv.id); }}
                 className="flex-1 min-w-0 text-left px-4 py-3.5 hover:bg-secondary transition-colors flex items-center justify-between gap-3"
               >
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <p className="text-sm truncate" style={{ fontWeight: conv._unread ? 700 : 500, color: conv._unread ? '#b45309' : '#111827' }}>
+                    <p className="text-sm truncate" style={{ fontWeight: count > 0 ? 700 : 500, color: count > 0 ? '#b45309' : '#111827' }}>
                       {conv.user_name}
                     </p>
-                    {conv._unread && <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />}
+                    {count > 0 && (
+                      <span style={{ backgroundColor: '#b45309' }} className="text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center shrink-0">
+                        {count > 9 ? '9+' : count}
+                      </span>
+                    )}
                   </div>
                   {conv.user_email && (
                     <p className="text-xs text-muted-foreground truncate">{conv.user_email}</p>
@@ -336,7 +346,8 @@ const AdminInbox = ({ onClose }) => {
                 <Trash2 size={14} />
               </button>
             </div>
-          ))}
+            );
+          })}
         </div>
       ) : (
         <>
@@ -385,8 +396,11 @@ const ChatWidget = () => {
   const [open, setOpen] = useState(false);
   const [admin] = useState(isAdmin);
   const [unread, setUnread] = useState(0);
+  const [unreadCounts, setUnreadCounts] = useState({});
   const [tooltip, setTooltip] = useState(false);
   const openRef = useRef(false);
+
+  const clearConv = (id) => setUnreadCounts((prev) => { const next = { ...prev }; delete next[id]; return next; });
 
   useEffect(() => { openRef.current = open; }, [open]);
 
@@ -419,13 +433,16 @@ const ChatWidget = () => {
     const channel = supabase
       .channel('widget-unread')
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, (payload) => {
-        if (payload.new.sender === 'user' && !openRef.current) {
-          setUnread((prev) => prev + 1);
-          if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
-            new Notification('New message — PPA Chat', {
-              body: payload.new.content,
-              icon: '/logo1.webp',
-            });
+        if (payload.new.sender === 'user') {
+          setUnreadCounts((prev) => ({ ...prev, [payload.new.conversation_id]: (prev[payload.new.conversation_id] || 0) + 1 }));
+          if (!openRef.current) {
+            setUnread((prev) => prev + 1);
+            if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
+              new Notification('New message — PPA Chat', {
+                body: payload.new.content,
+                icon: '/logo1.webp',
+              });
+            }
           }
         }
       })
@@ -455,7 +472,7 @@ const ChatWidget = () => {
           </div>
           <div className="flex-1 overflow-hidden">
             {admin
-              ? <AdminInbox onClose={() => setOpen(false)} />
+              ? <AdminInbox onClose={() => setOpen(false)} unreadCounts={unreadCounts} onConvRead={clearConv} />
               : <UserChat onClose={() => setOpen(false)} />
             }
           </div>
