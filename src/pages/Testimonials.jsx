@@ -77,12 +77,12 @@ const Testimonials = () => {
         <meta property="og:title" content="Student Success Stories | PPA P.Eng. Academy" />
         <meta property="og:description" content="Engineers across Canada share their results after passing the P.Eng. exam with PPA P.Eng. Academy. 100% pass rate." />
         <meta property="og:url" content="https://www.ppapeng.ca/testimonials" />
-        <meta property="og:image" content="https://www.ppapeng.ca/logo.png" />
+        <meta property="og:image" content="https://www.ppapeng.ca/logo1.webp" />
         <meta property="og:locale" content="en_CA" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Student Success Stories | PPA P.Eng. Academy" />
         <meta name="twitter:description" content="Engineers across Canada share their results after passing the P.Eng. exam with PPA P.Eng. Academy." />
-        <meta name="twitter:image" content="https://www.ppapeng.ca/logo.png" />
+        <meta name="twitter:image" content="https://www.ppapeng.ca/logo1.webp" />
         <script type="application/ld+json">{JSON.stringify(reviewSchema)}</script>
       </Helmet>
       <Navbar />

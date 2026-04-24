@@ -38,12 +38,12 @@ const Contact = () => {
         <meta property="og:title" content="Contact PPA P.Eng. Academy | P.Eng. Exam Prep Canada" />
         <meta property="og:description" content="Contact PPA P.Eng. Academy for questions about P.Eng. exam preparation courses and enrollment across Canada." />
         <meta property="og:url" content="https://www.ppapeng.ca/contact" />
-        <meta property="og:image" content="https://www.ppapeng.ca/logo.png" />
+        <meta property="og:image" content="https://www.ppapeng.ca/logo1.webp" />
         <meta property="og:locale" content="en_CA" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact PPA P.Eng. Academy | P.Eng. Exam Prep Canada" />
         <meta name="twitter:description" content="Contact PPA P.Eng. Academy for questions about P.Eng. exam preparation courses and enrollment." />
-        <meta name="twitter:image" content="https://www.ppapeng.ca/logo.png" />
+        <meta name="twitter:image" content="https://www.ppapeng.ca/logo1.webp" />
       </Helmet>
       <Navbar />
 

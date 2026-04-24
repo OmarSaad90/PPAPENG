@@ -34,12 +34,12 @@ const Payments = () => {
         <meta property="og:title" content="Enroll in P.Eng. Exam Prep Courses | PPA P.Eng. Academy" />
         <meta property="og:description" content="Simple enrollment for P.Eng. exam preparation courses. 100% pass rate guaranteed or your money back." />
         <meta property="og:url" content="https://www.ppapeng.ca/enroll" />
-        <meta property="og:image" content="https://www.ppapeng.ca/logo.png" />
+        <meta property="og:image" content="https://www.ppapeng.ca/logo1.webp" />
         <meta property="og:locale" content="en_CA" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Enroll in P.Eng. Exam Prep Courses | PPA P.Eng. Academy" />
         <meta name="twitter:description" content="Simple enrollment for P.Eng. exam preparation courses. 100% pass rate guaranteed or your money back." />
-        <meta name="twitter:image" content="https://www.ppapeng.ca/logo.png" />
+        <meta name="twitter:image" content="https://www.ppapeng.ca/logo1.webp" />
       </Helmet>
       <Navbar />
 

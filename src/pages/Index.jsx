@@ -16,12 +16,12 @@ const Index = () => {
         <meta property="og:title" content="PPA P.Eng. Academy | P.Eng. Exam Preparation Courses in Canada" />
         <meta property="og:description" content="Expert-led P.Eng. exam preparation courses for engineers across Canada. 100% pass rate. Aligned with all Canadian provincial engineering bodies." />
         <meta property="og:url" content="https://www.ppapeng.ca/" />
-        <meta property="og:image" content="https://www.ppapeng.ca/logo.png" />
+        <meta property="og:image" content="https://www.ppapeng.ca/logo1.webp" />
         <meta property="og:locale" content="en_CA" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="PPA P.Eng. Academy | P.Eng. Exam Preparation Courses in Canada" />
         <meta name="twitter:description" content="Expert-led P.Eng. exam preparation courses for engineers across Canada. 100% pass rate guaranteed." />
-        <meta name="twitter:image" content="https://www.ppapeng.ca/logo.png" />
+        <meta name="twitter:image" content="https://www.ppapeng.ca/logo1.webp" />
       </Helmet>
       <Navbar />
 
