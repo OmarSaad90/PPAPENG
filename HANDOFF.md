@@ -201,7 +201,7 @@ Set in `index.html` line 5: `<link rel="icon" type="image/webp" href="/logo1.web
 - Check GSC Coverage and Performance reports in 2-3 weeks for indexing status and keyword impressions
 - Get backlinks: Charbel LinkedIn post linking to ppapeng.ca, PPA Consulting website link, engineering directories
 - Upgrade admin auth to Supabase Auth (email+password) if tighter security is needed in the future
-- Verify `ppapeng.ca` domain in Resend so chat email notifications can be sent from `chat@ppapeng.ca` instead of the `onboarding@resend.dev` sandbox sender (currently lands in spam on first delivery). Steps: Resend dashboard → Domains → Add `ppapeng.ca` → copy DNS records → paste into Porkbun → wait ~5 min → update `FROM_ADDRESS` secret in Supabase.
+- (done 2026-04-28) `ppapeng.ca` verified in Resend; `FROM_ADDRESS` secret set to `PPA Chat <chat@ppapeng.ca>`; emails now deliver to `charbel.abousamrah@gmail.com` from the verified domain. Charbel should mark first email "Not spam" once.
 
 ## Completed
 - OG social share image done (2026-04-24): `public/og-image.png` (1200x630), applied to all 7 pages (og:image + twitter:image)

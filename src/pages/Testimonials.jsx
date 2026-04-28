@@ -43,6 +43,16 @@ const testimonials = [
     discipline: "Civil Engineering",
     quote: "I had the opportunity to take the P.Eng. preparation for four courses (Highway Engineering, Transportation Planning, Engineering Economics, and Hydraulic Engineering) with Charbel, and it was an excellent experience. Two of these were previously recorded, and I had the chance to attend two live sessions. In both cases, the recordings were extremely helpful to prepare for the exams. Charbel introduces a strategy for each course chapter by chapter, provides clear content and guides you through exercises down to the last detail. I would highly recommend these courses to anyone preparing for their P.Eng.",
   },
+  {
+    name: "Sona Joy",
+    discipline: "Engineering Economics & Highway Design",
+    quote: "Charbel's classes are easy to follow, as he breaks down complex topics into simple, understandable concepts. I have taken two of his courses -- Engineering Economics and Highway Design -- and found them highly effective. He starts by establishing a strong foundation of the subject and then progresses to exercises that help reinforce and connect the ideas. He is also readily available to assist with any questions or doubts. Overall, he is an outstanding mentor.",
+  },
+  {
+    name: "Srushti Trivedi, P.Eng.",
+    discipline: "Engineering Economics",
+    quote: "I had the opportunity to study Engineering Economics with Charbel as my tutor, and it was a very positive learning experience. He explained the concepts in a clear and easy-to-understand way, which helped me build confidence in the subject. He also showed me how to apply the equations correctly during exams, which was very helpful. In addition, he shared past exam papers and solved them step by step, giving practical insight into the exam format and problem-solving approach. Overall, his tutoring was supportive, clear, and effective.",
+  },
 ];
 
 const Testimonials = () => {
