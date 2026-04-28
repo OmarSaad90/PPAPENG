@@ -108,7 +108,7 @@ Contact form is wired up to web3forms. Submissions go directly to `charbel.abous
 Fixed top, white/90 backdrop blur. Links (desktop + mobile): Home, Courses (with dropdown), Testimonials, Enroll, FAQs, Contact Us. "Enroll Now" CTA button top right links to /courses.
 
 ## Course data — `src/data/courses.js`
-Single source of truth. Disciplines: Civil (5 courses), Electrical (4), Mechanical (4), Mechatronics (4), Complementary Studies (1) -- all `status: 'available'`.
+Single source of truth. Disciplines: Civil (3 courses), Electrical (4), Mechanical (4), Mechatronics (4), Complementary Studies (1) -- all `status: 'available'`.
 
 Course data sourced from pengacademy.com. Each discipline has a `description` tagline. Each course has `id`, `title`, `icon` (lucide component), `summary`, and `topics` array.
 
@@ -116,8 +116,6 @@ Civil courses (with codes):
 1. Hydraulics Engineering (CIV A5)
 2. Transportation Planning and Engineering (CIV B7)
 3. Highway Design, Construction, and Maintenance (CIV A6)
-4. Elementary Structural Analysis (CIV A1)
-5. Advanced Structural Analysis (CIV B1)
 
 Complementary Studies courses:
 1. Engineering Economics (CS 1) -- only course in this discipline
@@ -126,7 +124,7 @@ Note: Engineering Economics was removed from Civil (it lives in Complementary St
 
 All discipline headers have images. Civil additionally has `headerImage: civilHeroImg`. To add headers for other disciplines: import the WebP and add `headerImage` to the discipline entry.
 
-All course icons are imported at the top of courses.js from lucide-react. The `Briefcase` import is now unused (Engineering Management was removed) -- can be cleaned up.
+All course icons are imported at the top of courses.js from lucide-react.
 
 ## Instructor — Charbel Abou Samra
 Displayed on homepage in "Founder" section. Photo: `src/assets/charbel.png`.
@@ -203,6 +201,7 @@ Set in `index.html` line 5: `<link rel="icon" type="image/webp" href="/logo1.web
 - Check GSC Coverage and Performance reports in 2-3 weeks for indexing status and keyword impressions
 - Get backlinks: Charbel LinkedIn post linking to ppapeng.ca, PPA Consulting website link, engineering directories
 - Upgrade admin auth to Supabase Auth (email+password) if tighter security is needed in the future
+- Verify `ppapeng.ca` domain in Resend so chat email notifications can be sent from `chat@ppapeng.ca` instead of the `onboarding@resend.dev` sandbox sender (currently lands in spam on first delivery). Steps: Resend dashboard → Domains → Add `ppapeng.ca` → copy DNS records → paste into Porkbun → wait ~5 min → update `FROM_ADDRESS` secret in Supabase.
 
 ## Completed
 - OG social share image done (2026-04-24): `public/og-image.png` (1200x630), applied to all 7 pages (og:image + twitter:image)
@@ -222,6 +221,25 @@ Set in `index.html` line 5: `<link rel="icon" type="image/webp" href="/logo1.web
   - Supabase project: oisvocgopuswtdfhkksm.supabase.co
   - Admin password stored in VITE_ADMIN_PASSWORD (Netlify env var + local .env)
   - .env is gitignored -- never pushed to GitHub
+- Email notifications for chat messages built (2026-04-28):
+  - Charbel gets an email at `charbel.abousamrah@gmail.com` whenever a user sends a chat message
+  - Architecture: Supabase Database Webhook on `messages` INSERT → Edge Function `notify-new-message` → Resend API
+  - Edge function: `supabase/functions/notify-new-message/index.ts`
+    - Filters out admin replies (only `sender = 'user'` triggers email)
+    - Debounces to one email per conversation per 10 minutes (uses new `last_notified_at` column on `conversations`)
+    - Validates a shared `WEBHOOK_SECRET` header so only the Supabase webhook can invoke it
+    - HTML-escapes user content; sets `reply_to` to the visitor's email if provided
+  - Schema change: `alter table conversations add column last_notified_at timestamptz`
+  - Resend account: free tier (3000 emails/month, 100/day), owned under Omar's email; sandbox sender `onboarding@resend.dev`
+  - First email Charbel receives may land in Spam — mark "Not spam" once, future emails go to inbox
+  - Edge Function secrets in Supabase (Project Settings → Edge Functions → Secrets):
+    - `RESEND_API_KEY` — Resend API key (Sending access)
+    - `ADMIN_EMAIL` — recipient address (currently charbel.abousamrah@gmail.com)
+    - `WEBHOOK_SECRET` — shared secret matching the webhook header
+    - `SITE_URL` — https://ppapeng.ca (used in "Reply in admin panel" link)
+    - `FROM_ADDRESS` — optional, defaults to `PPA Chat <onboarding@resend.dev>`. Override once domain is verified.
+  - Database webhook config: Database → Webhooks → `notify-on-user-message`, table `messages`, INSERT only, calls `notify-new-message` edge function with header `x-webhook-secret: <WEBHOOK_SECRET>`
+  - Deploy command: `npx supabase functions deploy notify-new-message --no-verify-jwt` (the `--no-verify-jwt` flag is required because the database webhook is unauthenticated; we authenticate via the shared secret instead)
 
 ## Image plan (remaining disciplines)
 All discipline headers already have images in assets. If any are missing or need replacing, source from Pexels or Unsplash (free, no attribution). Claude can download and convert automatically via Python/Pillow. Add `headerImage` to the discipline entry in `courses.js`.
