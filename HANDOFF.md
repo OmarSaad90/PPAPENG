@@ -56,7 +56,7 @@ No payment integration -- email-based enrollment only. Sections: header → guar
 - "How It Works" 3-step flow uses `#f7f4ef` bg with amber dot pattern.
 
 ### Testimonials — `src/pages/Testimonials.jsx` (route: `/testimonials`)
-8 testimonials filled in. 3-column card grid (2 on tablet, 1 on mobile). Layout is final.
+9 testimonials filled in. 3-column card grid (2 on tablet, 1 on mobile). Layout is final.
 
 Card details:
 - Background: `#f7f4ef` (warm, matches site accent sections)
@@ -75,6 +75,7 @@ Testimonials and their disciplines:
 6. Harshraj Chauhan -- Hydraulics Engineering
 7. Nilush Abeygoonaratne -- Transportation Planning and Engineering
 8. Hassan Alame -- Civil Engineering (4 courses)
+9. Tushar Sethi, P.Eng. -- P.Eng. Preparation Program
 
 ### FAQs — `src/pages/FAQs.jsx`
 4 categories in a 2-column grid on desktop. Current question counts: General (4) + Learning Experience (4) in row 1, Courses (2) + Enrollment and Payment (3) in row 2. "Still have a question?" CTA uses `#f7f4ef` with amber dot pattern, links to /contact page.

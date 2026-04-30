@@ -53,6 +53,11 @@ const testimonials = [
     discipline: "Engineering Economics",
     quote: "I had the opportunity to study Engineering Economics with Charbel as my tutor, and it was a very positive learning experience. He explained the concepts in a clear and easy-to-understand way, which helped me build confidence in the subject. He also showed me how to apply the equations correctly during exams, which was very helpful. In addition, he shared past exam papers and solved them step by step, giving practical insight into the exam format and problem-solving approach. Overall, his tutoring was supportive, clear, and effective.",
   },
+  {
+    name: "Tushar Sethi, P.Eng.",
+    discipline: "P.Eng. Preparation Program",
+    quote: "Having completed the comprehensive P.Eng. preparation program with Charbel, covering every subject and module required for the designation, I can confidently say his guidance was the cornerstone of my success. Charbel has a remarkable ability to distill complex technical theories into practical, manageable insights. Beyond the technical curriculum, his mentorship provided me with the structured mindset and confidence needed to navigate the licensure process effectively. For any aspiring engineer looking for a mentor who is truly invested in their professional growth, I cannot recommend Charbel's courses highly enough. His dedication to his students' success is evident in every session.",
+  },
 ];
 
 const Testimonials = () => {
