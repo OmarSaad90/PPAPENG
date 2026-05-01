@@ -55,6 +55,7 @@ const testimonials = [
   },
   {
     name: "Elias Kossaifi",
+    discipline: "P.Eng. Preparation Program",
     quote: "Balancing work, being a father and a husband, and living abroad is not easy. On top of that, studying at night makes it even more challenging. With Charbel's courses, I was able to focus on exactly what I needed to know -- clear, simple, well-organized, and self-paced with recorded sessions. Highly recommended.",
   },
   {
